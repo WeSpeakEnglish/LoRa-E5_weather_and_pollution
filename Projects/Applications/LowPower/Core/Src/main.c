@@ -40,7 +40,7 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-LPTIM_HandleTypeDef hlptim1;
+ LPTIM_HandleTypeDef hlptim1;
 
 /* USER CODE BEGIN PV */
 
@@ -97,12 +97,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	LED_control(1);
-	HAL_LPTIM_Counter_Start_IT(&hlptim1,
-				2000 * LSI_VALUE / 1000);
-    HAL_PWREx_EnterSTOP2Mode(PWR_STOPENTRY_WFI);
-    LED_control(0);
-    HAL_Delay(2000);
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -120,6 +115,7 @@ void SystemClock_Config(void)
   /** Configure the main internal regulator output voltage
   */
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
+
   /** Initializes the CPU, AHB and APB busses clocks
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI|RCC_OSCILLATORTYPE_MSI;
@@ -133,6 +129,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+
   /** Configure the SYSCLKSource, HCLK, PCLK1 and PCLK2 clocks dividers
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK3|RCC_CLOCKTYPE_HCLK
@@ -246,5 +243,3 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -72,5 +72,3 @@ void SUBGHZ_Radio_IRQHandler(void);
 #endif
 
 #endif /* __STM32WLxx_IT_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

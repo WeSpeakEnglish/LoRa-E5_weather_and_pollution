@@ -148,7 +148,7 @@ void PWR_ExitSleepMode(void)
   /* USER CODE BEGIN ExitSleepMode_1 */
 
   /* USER CODE END ExitSleepMode_1 */
-  /* Suspend sysTick */
+  /* Resume sysTick */
   HAL_ResumeTick();
 
   /* USER CODE BEGIN ExitSleepMode_2 */
@@ -164,5 +164,3 @@ void PWR_ExitSleepMode(void)
 /* USER CODE BEGIN PrFD */
 
 /* USER CODE END PrFD */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

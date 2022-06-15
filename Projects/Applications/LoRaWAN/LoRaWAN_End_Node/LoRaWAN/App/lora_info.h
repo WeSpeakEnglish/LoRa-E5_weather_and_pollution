@@ -90,5 +90,3 @@ LoraInfo_t *LoraInfo_GetPtr(void);
 #endif
 
 #endif /* __LORA_INFO_H__ */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -35,6 +35,8 @@ extern "C" {
 /* definition and callback for tiny_vsnprintf */
 #include "stm32_tiny_vsnprintf.h"
 
+/* enum number of task and priority*/
+#include "utilities_def.h"
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
@@ -45,7 +47,6 @@ extern "C" {
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
-
 #define VLEVEL_OFF    0  /*!< used to set UTIL_ADV_TRACE_SetVerboseLevel() (not as message param) */
 #define VLEVEL_ALWAYS 0  /*!< used as message params, if this level is given
                               trace will be printed even when UTIL_ADV_TRACE_SetVerboseLevel(OFF) */
@@ -67,6 +68,9 @@ extern "C" {
 /* USER CODE END EV */
 
 /* Exported macros -----------------------------------------------------------*/
+/******************************************************************************
+  * common
+  ******************************************************************************/
 /**
   * @brief Memory placement macro
   */
@@ -91,6 +95,36 @@ extern "C" {
 /**
   * @brief macro used to initialize the critical section
   */
+#define UTILS_INIT_CRITICAL_SECTION()
+
+/**
+  * @brief macro used to enter the critical section
+  */
+#define UTILS_ENTER_CRITICAL_SECTION() uint32_t primask_bit= __get_PRIMASK();\
+  __disable_irq()
+
+/**
+  * @brief macro used to exit the critical section
+  */
+#define UTILS_EXIT_CRITICAL_SECTION()  __set_PRIMASK(primask_bit)
+/******************************************************************************
+  * sequencer
+  ******************************************************************************/
+
+/**
+  * @brief default number of tasks configured in sequencer
+  */
+#define UTIL_SEQ_CONF_TASK_NBR    CFG_SEQ_Task_NBR
+
+/**
+  * @brief default value of priority task
+  */
+
+#define UTIL_SEQ_CONF_PRIO_NBR    CFG_SEQ_Prio_NBR
+
+/**
+  * @brief macro used to initialize the critical section
+  */
 #define UTIL_SEQ_INIT_CRITICAL_SECTION( )    UTILS_INIT_CRITICAL_SECTION()
 
 /**
@@ -107,22 +141,6 @@ extern "C" {
   * @brief Memset utilities interface to application
   */
 #define UTIL_SEQ_MEMSET8( dest, value, size )   UTIL_MEM_set_8( dest, value, size )
-
-/**
-  * @brief macro used to initialize the critical section
-  */
-#define UTILS_INIT_CRITICAL_SECTION()
-
-/**
-  * @brief macro used to enter the critical section
-  */
-#define UTILS_ENTER_CRITICAL_SECTION() uint32_t primask_bit= __get_PRIMASK();\
-  __disable_irq()
-
-/**
-  * @brief macro used to exit the critical section
-  */
-#define UTILS_EXIT_CRITICAL_SECTION()  __set_PRIMASK(primask_bit)
 
 /******************************************************************************
   * trace\advanced
@@ -158,5 +176,3 @@ extern "C" {
 #endif
 
 #endif /*__UTILITIES_CONF_H__ */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

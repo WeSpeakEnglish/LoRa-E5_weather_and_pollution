@@ -24,6 +24,7 @@
 #include "lora_app.h"
 #include "sys_app.h"
 #include "stm32_seq.h"
+
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
@@ -96,5 +97,3 @@ void MX_LoRaWAN_Process(void)
 /* USER CODE BEGIN PrFD */
 
 /* USER CODE END PrFD */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
