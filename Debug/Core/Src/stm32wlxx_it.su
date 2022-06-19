@@ -1,0 +1,17 @@
+../Core/Src/stm32wlxx_it.c:73:6:NMI_Handler	4	static
+../Core/Src/stm32wlxx_it.c:88:6:HardFault_Handler	4	static
+../Core/Src/stm32wlxx_it.c:103:6:MemManage_Handler	4	static
+../Core/Src/stm32wlxx_it.c:118:6:BusFault_Handler	4	static
+../Core/Src/stm32wlxx_it.c:133:6:UsageFault_Handler	4	static
+../Core/Src/stm32wlxx_it.c:148:6:SVC_Handler	4	static
+../Core/Src/stm32wlxx_it.c:161:6:DebugMon_Handler	4	static
+../Core/Src/stm32wlxx_it.c:174:6:PendSV_Handler	4	static
+../Core/Src/stm32wlxx_it.c:187:6:SysTick_Handler	4	static
+../Core/Src/stm32wlxx_it.c:207:6:TAMP_STAMP_LSECSS_SSRU_IRQHandler	8	static
+../Core/Src/stm32wlxx_it.c:221:6:DMA1_Channel1_IRQHandler	8	static
+../Core/Src/stm32wlxx_it.c:235:6:DMA1_Channel2_IRQHandler	8	static
+../Core/Src/stm32wlxx_it.c:249:6:USART1_IRQHandler	8	static
+../Core/Src/stm32wlxx_it.c:263:6:EXTI15_10_IRQHandler	8	static
+../Core/Src/stm32wlxx_it.c:277:6:RTC_Alarm_IRQHandler	8	static
+../Core/Src/stm32wlxx_it.c:291:6:SUBGHZ_Radio_IRQHandler	8	static
+../Core/Src/stm32wlxx_it.c:305:6:DMAMUX1_OVR_IRQHandler	8	static
