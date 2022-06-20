@@ -119,12 +119,12 @@ extern "C" {
 #define LORAWAN_DEFAULT_CLASS_B_C_RESP_TIMEOUT      8000
 
 /* USER CODE BEGIN EC */
-
+#define CAYENNE_LPP
 /* USER CODE END EC */
 
 /* Exported macros -----------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-
+extern uint16_t PM2_5;
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/

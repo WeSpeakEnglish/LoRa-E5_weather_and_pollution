@@ -19,11 +19,12 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "app_lorawan.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "string.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -33,6 +34,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define RX_BUFFER_SIZE 20
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -44,6 +46,14 @@
 
 /* USER CODE BEGIN PV */
 
+uint8_t aRXBufferUser[RX_BUFFER_SIZE];
+
+uint8_t mainBuffer[RX_BUFFER_SIZE];
+
+uint8_t receivedFlag = 1;
+uint16_t PM2_5 = 0;
+
+extern DMA_HandleTypeDef hdma_usart2_rx;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -64,6 +74,7 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+	static uint16_t count = 1;
 
   /* USER CODE END 1 */
 
@@ -86,7 +97,12 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_LoRaWAN_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+  UART2_SET =0;
+
+  HAL_UARTEx_ReceiveToIdle_DMA(&huart2, aRXBufferUser, RX_BUFFER_SIZE);
+  __HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);
 
   /* USER CODE END 2 */
 
@@ -94,10 +110,17 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
     /* USER CODE END WHILE */
     MX_LoRaWAN_Process();
 
     /* USER CODE BEGIN 3 */
+    if(UART2_SET){
+    	UART2_SET = 0;
+    	HAL_UARTEx_ReceiveToIdle_DMA(&huart2, aRXBufferUser, RX_BUFFER_SIZE);
+	__HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);
+	PM2_5 = mainBuffer[6]*256+mainBuffer[7];
+    }
   }
   /* USER CODE END 3 */
 }
@@ -152,6 +175,19 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
+{
+	if (huart->Instance == USART2)
+	{
+		if(aRXBufferUser[0]=='B'&& aRXBufferUser[1]=='M'){
+		memcpy(mainBuffer,aRXBufferUser,Size);
+
+
+		}
+		UART2_SET =1;
+
+	}
+}
 /* USER CODE END 4 */
 
 /**

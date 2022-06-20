@@ -30,6 +30,7 @@
   * @brief DMA handle
   */
 extern DMA_HandleTypeDef hdma_usart1_tx;
+extern uint8_t USART2_SET;
 
 /**
   * @brief UART handle
@@ -245,6 +246,15 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     HAL_UART_Receive_IT(huart, &charRx, 1);
   }
   /* USER CODE BEGIN HAL_UART_RxCpltCallback_2 */
+
+      if (huart->Instance == USART2) {
+    	  __HAL_UART_CLEAR_IDLEFLAG(&huart2);        /* Clear IDLE line flag */
+    	  UART2_SET = 1;
+         // receivedFlag = 1;
+      }
+
+
+
 
   /* USER CODE END HAL_UART_RxCpltCallback_2 */
 }

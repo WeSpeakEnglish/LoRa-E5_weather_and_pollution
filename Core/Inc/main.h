@@ -31,7 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+extern  uint8_t UART2_SET;
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
