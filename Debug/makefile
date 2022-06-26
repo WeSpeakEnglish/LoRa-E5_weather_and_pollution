@@ -82,7 +82,7 @@ main-build: LoRa-E5_weather_and_pollution.elf secondary-outputs
 
 # Tool invocations
 LoRa-E5_weather_and_pollution.elf LoRa-E5_weather_and_pollution.map: $(OBJS) $(USER_OBJS) C:\PRJ\LoRa-E5_weather_and_pollution\STM32WLE5JCIX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "LoRa-E5_weather_and_pollution.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\PRJ\LoRa-E5_weather_and_pollution\STM32WLE5JCIX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LoRa-E5_weather_and_pollution.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "LoRa-E5_weather_and_pollution.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\PRJ\LoRa-E5_weather_and_pollution\STM32WLE5JCIX_FLASH.ld" -Wl,-Map="LoRa-E5_weather_and_pollution.map" -Wl,--gc-sections -Wl,--verbose -static  -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

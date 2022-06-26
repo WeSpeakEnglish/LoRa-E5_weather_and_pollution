@@ -557,7 +557,7 @@ static void SendTxData(void)
   uint16_t altitudeGps = 0;
 #endif /* CAYENNE_LPP */
 
-  EnvSensors_Read(&sensor_data);
+//  EnvSensors_Read(&sensor_data);
 
   APP_LOG(TS_ON, VLEVEL_M, "VDDA: %d\r\n", batteryLevel);
   APP_LOG(TS_ON, VLEVEL_M, "temp: %d\r\n", (int16_t)(sensor_data.temperature));
@@ -576,21 +576,29 @@ static void SendTxData(void)
     CayenneLppAddDigitalInput(channel++, GetBatteryLevel());
     CayenneLppAddDigitalOutput(channel++, AppLedStateOn);
   }
+uint8_t i = 0;
+  //CayenneLppCopy(AppData.Buffer);
+//AppData.Buffer[i++]='M';
+//AppData.Buffer[i++]='M';
+//AppData.Buffer[i++]='M';
+//AppData.Buffer[i++]='M';
+//AppData.Buffer[i++]='M';
+//AppData.Buffer[i++]='M';
+//AppData.BufferSize = i;
 
-  CayenneLppCopy(AppData.Buffer);
-  AppData.BufferSize = CayenneLppGetSize();
+ // AppData.BufferSize = CayenneLppGetSize();
 #else  /* not CAYENNE_LPP */
-  humidity    = (uint16_t)(sensor_data.humidity * 10);            /* in %*10     */
-  temperature = (int16_t)(sensor_data.temperature);
-  pressure = (uint16_t)(sensor_data.pressure * 100 / 10); /* in hPa / 10 */
+//  humidity    = (uint16_t)(sensor_data.humidity * 10);            /* in %*10     */
+//  temperature = (int16_t)(sensor_data.temperature);
+ // pressure = (uint16_t)(sensor_data.pressure * 100 / 10); /* in hPa / 10 */
 
-  AppData.Buffer[i++] = AppLedStateOn;
-  AppData.Buffer[i++] = (uint8_t)((pressure >> 8) & 0xFF);
-  AppData.Buffer[i++] = (uint8_t)(pressure & 0xFF);
-  AppData.Buffer[i++] = (uint8_t)(temperature & 0xFF);
-  AppData.Buffer[i++] = (uint8_t)((humidity >> 8) & 0xFF);
-  AppData.Buffer[i++] = (uint8_t)(humidity & 0xFF);
-
+//  AppData.Buffer[i++] = AppLedStateOn;
+//  AppData.Buffer[i++] = (uint8_t)((pressure >> 8) & 0xFF);
+//  AppData.Buffer[i++] = (uint8_t)(pressure & 0xFF);
+//  AppData.Buffer[i++] = (uint8_t)(temperature & 0xFF);
+//  AppData.Buffer[i++] = (uint8_t)((humidity >> 8) & 0xFF);
+//  AppData.Buffer[i++] = (uint8_t)(humidity & 0xFF);
+/*
   if ((LmHandlerParams.ActiveRegion == LORAMAC_REGION_US915) || (LmHandlerParams.ActiveRegion == LORAMAC_REGION_AU915)
       || (LmHandlerParams.ActiveRegion == LORAMAC_REGION_AS923))
   {
@@ -604,7 +612,7 @@ static void SendTxData(void)
     latitude = sensor_data.latitude;
     longitude = sensor_data.longitude;
 
-    AppData.Buffer[i++] = GetBatteryLevel();        /* 1 (very low) to 254 (fully charged) */
+    AppData.Buffer[i++] = GetBatteryLevel();
     AppData.Buffer[i++] = (uint8_t)((latitude >> 16) & 0xFF);
     AppData.Buffer[i++] = (uint8_t)((latitude >> 8) & 0xFF);
     AppData.Buffer[i++] = (uint8_t)(latitude & 0xFF);
@@ -614,6 +622,15 @@ static void SendTxData(void)
     AppData.Buffer[i++] = (uint8_t)((altitudeGps >> 8) & 0xFF);
     AppData.Buffer[i++] = (uint8_t)(altitudeGps & 0xFF);
   }
+*/
+  AppData.Buffer[i++]='h';
+  AppData.Buffer[i++]='e';
+  AppData.Buffer[i++]='l';
+  AppData.Buffer[i++]='l';
+  AppData.Buffer[i++]='o';
+  AppData.Buffer[i++]='!';
+  AppData.Buffer[i++]='!';
+
 
   AppData.BufferSize = i;
 #endif /* CAYENNE_LPP */

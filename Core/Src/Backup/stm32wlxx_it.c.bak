@@ -41,7 +41,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-
+extern uint8_t UART2_SET;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/

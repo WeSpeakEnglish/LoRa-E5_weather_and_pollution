@@ -30,7 +30,6 @@
   * @brief DMA handle
   */
 extern DMA_HandleTypeDef hdma_usart1_tx;
-extern uint8_t USART2_SET;
 
 /**
   * @brief UART handle
