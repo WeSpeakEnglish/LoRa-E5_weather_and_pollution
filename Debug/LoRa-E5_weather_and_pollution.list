@@ -29,25 +29,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  12 .ARM.attributes 0000002a  00000000  00000000  00030554  2**0
                   CONTENTS, READONLY
- 13 .debug_info   00053e3b  00000000  00000000  0003057e  2**0
+ 13 .debug_info   00053e1d  00000000  00000000  0003057e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 0000bec6  00000000  00000000  000843b9  2**0
+ 14 .debug_abbrev 0000bed9  00000000  00000000  0008439b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_loc    00025321  00000000  00000000  0009027f  2**0
+ 15 .debug_loc    000252db  00000000  00000000  00090274  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_aranges 00002768  00000000  00000000  000b55a0  2**3
+ 16 .debug_aranges 00002768  00000000  00000000  000b5550  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_ranges 000036f0  00000000  00000000  000b7d08  2**3
+ 17 .debug_ranges 000036f0  00000000  00000000  000b7cb8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_macro  00027a28  00000000  00000000  000bb3f8  2**0
+ 18 .debug_macro  00027a28  00000000  00000000  000bb3a8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_line   0004497c  00000000  00000000  000e2e20  2**0
+ 19 .debug_line   0004493e  00000000  00000000  000e2dd0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_str    000c93fe  00000000  00000000  0012779c  2**0
+ 20 .debug_str    000c93fe  00000000  00000000  0012770e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .comment      00000050  00000000  00000000  001f0b9a  2**0
+ 21 .comment      00000050  00000000  00000000  001f0b0c  2**0
                   CONTENTS, READONLY
- 22 .debug_frame  00006df0  00000000  00000000  001f0bec  2**2
+ 22 .debug_frame  00006df0  00000000  00000000  001f0b5c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -16141,87 +16141,77 @@ static void OnRestoreContextRequest(void *nvm, uint32_t nvm_size)
   uint8_t batteryLevel = GetBatteryLevel();
  800678a:	f7fa fead 	bl	80014e8 <GetBatteryLevel>
   AppData.Port = LORAWAN_USER_APP_PORT;
- 800678e:	4b21      	ldr	r3, [pc, #132]	; (8006814 <SendTxData+0x8c>)
- 8006790:	2202      	movs	r2, #2
- 8006792:	701a      	strb	r2, [r3, #0]
-  AppData.Buffer[i++]='h';
- 8006794:	685a      	ldr	r2, [r3, #4]
- 8006796:	2168      	movs	r1, #104	; 0x68
- 8006798:	7011      	strb	r1, [r2, #0]
-  AppData.Buffer[i++]='e';
- 800679a:	685a      	ldr	r2, [r3, #4]
- 800679c:	2165      	movs	r1, #101	; 0x65
- 800679e:	7051      	strb	r1, [r2, #1]
-  AppData.Buffer[i++]='l';
- 80067a0:	6859      	ldr	r1, [r3, #4]
- 80067a2:	226c      	movs	r2, #108	; 0x6c
- 80067a4:	708a      	strb	r2, [r1, #2]
-  AppData.Buffer[i++]='l';
- 80067a6:	6859      	ldr	r1, [r3, #4]
- 80067a8:	70ca      	strb	r2, [r1, #3]
-  AppData.Buffer[i++]='o';
- 80067aa:	685a      	ldr	r2, [r3, #4]
- 80067ac:	216f      	movs	r1, #111	; 0x6f
- 80067ae:	7111      	strb	r1, [r2, #4]
-  AppData.Buffer[i++]='!';
- 80067b0:	6859      	ldr	r1, [r3, #4]
- 80067b2:	2221      	movs	r2, #33	; 0x21
- 80067b4:	714a      	strb	r2, [r1, #5]
-  AppData.Buffer[i++]='!';
- 80067b6:	6859      	ldr	r1, [r3, #4]
- 80067b8:	718a      	strb	r2, [r1, #6]
+ 800678e:	491f      	ldr	r1, [pc, #124]	; (800680c <SendTxData+0x84>)
+ 8006790:	2002      	movs	r0, #2
+ 8006792:	7008      	strb	r0, [r1, #0]
+  AppData.Buffer[i++] = PM2_5/100;
+ 8006794:	684c      	ldr	r4, [r1, #4]
+ 8006796:	4d1e      	ldr	r5, [pc, #120]	; (8006810 <SendTxData+0x88>)
+ 8006798:	882a      	ldrh	r2, [r5, #0]
+ 800679a:	4b1e      	ldr	r3, [pc, #120]	; (8006814 <SendTxData+0x8c>)
+ 800679c:	fba3 c202 	umull	ip, r2, r3, r2
+ 80067a0:	0952      	lsrs	r2, r2, #5
+ 80067a2:	7022      	strb	r2, [r4, #0]
+  AppData.Buffer[i++] = PM2_5%100;
+ 80067a4:	684c      	ldr	r4, [r1, #4]
+ 80067a6:	882a      	ldrh	r2, [r5, #0]
+ 80067a8:	fba3 5302 	umull	r5, r3, r3, r2
+ 80067ac:	095b      	lsrs	r3, r3, #5
+ 80067ae:	2564      	movs	r5, #100	; 0x64
+ 80067b0:	fb05 2313 	mls	r3, r5, r3, r2
+ 80067b4:	7063      	strb	r3, [r4, #1]
   AppData.BufferSize = i;
- 80067ba:	2207      	movs	r2, #7
- 80067bc:	705a      	strb	r2, [r3, #1]
+ 80067b6:	7048      	strb	r0, [r1, #1]
   if ((JoinLedTimer.IsRunning) && (LmHandlerJoinStatus() == LORAMAC_HANDLER_SET))
- 80067be:	4b16      	ldr	r3, [pc, #88]	; (8006818 <SendTxData+0x90>)
- 80067c0:	7a5b      	ldrb	r3, [r3, #9]
- 80067c2:	b9d3      	cbnz	r3, 80067fa <SendTxData+0x72>
+ 80067b8:	4b17      	ldr	r3, [pc, #92]	; (8006818 <SendTxData+0x90>)
+ 80067ba:	7a5b      	ldrb	r3, [r3, #9]
+ 80067bc:	b9d3      	cbnz	r3, 80067f4 <SendTxData+0x6c>
   status = LmHandlerSend(&AppData, LmHandlerParams.IsTxConfirmed, false);
- 80067c4:	2200      	movs	r2, #0
- 80067c6:	4b15      	ldr	r3, [pc, #84]	; (800681c <SendTxData+0x94>)
- 80067c8:	78d9      	ldrb	r1, [r3, #3]
- 80067ca:	4812      	ldr	r0, [pc, #72]	; (8006814 <SendTxData+0x8c>)
- 80067cc:	f001 f8de 	bl	800798c <LmHandlerSend>
+ 80067be:	2200      	movs	r2, #0
+ 80067c0:	4b16      	ldr	r3, [pc, #88]	; (800681c <SendTxData+0x94>)
+ 80067c2:	78d9      	ldrb	r1, [r3, #3]
+ 80067c4:	4811      	ldr	r0, [pc, #68]	; (800680c <SendTxData+0x84>)
+ 80067c6:	f001 f8e1 	bl	800798c <LmHandlerSend>
   else if (LORAMAC_HANDLER_DUTYCYCLE_RESTRICTED == status)
- 80067d0:	f110 0f06 	cmn.w	r0, #6
+ 80067ca:	f110 0f06 	cmn.w	r0, #6
   UTIL_TIMER_Time_t nextTxIn = 0;
- 80067d4:	bf18      	it	ne
- 80067d6:	2500      	movne	r5, #0
+ 80067ce:	bf18      	it	ne
+ 80067d0:	2500      	movne	r5, #0
   else if (LORAMAC_HANDLER_DUTYCYCLE_RESTRICTED == status)
- 80067d8:	d017      	beq.n	800680a <SendTxData+0x82>
+ 80067d2:	d017      	beq.n	8006804 <SendTxData+0x7c>
     UTIL_TIMER_Stop(&TxTimer);
- 80067da:	4c11      	ldr	r4, [pc, #68]	; (8006820 <SendTxData+0x98>)
- 80067dc:	4620      	mov	r0, r4
- 80067de:	f009 fed3 	bl	8010588 <UTIL_TIMER_Stop>
+ 80067d4:	4c12      	ldr	r4, [pc, #72]	; (8006820 <SendTxData+0x98>)
+ 80067d6:	4620      	mov	r0, r4
+ 80067d8:	f009 fed6 	bl	8010588 <UTIL_TIMER_Stop>
     UTIL_TIMER_SetPeriod(&TxTimer, MAX(nextTxIn, TxPeriodicity));
- 80067e2:	4b10      	ldr	r3, [pc, #64]	; (8006824 <SendTxData+0x9c>)
- 80067e4:	6819      	ldr	r1, [r3, #0]
- 80067e6:	42a9      	cmp	r1, r5
- 80067e8:	bf38      	it	cc
- 80067ea:	4629      	movcc	r1, r5
- 80067ec:	4620      	mov	r0, r4
- 80067ee:	f009 ff71 	bl	80106d4 <UTIL_TIMER_SetPeriod>
+ 80067dc:	4b11      	ldr	r3, [pc, #68]	; (8006824 <SendTxData+0x9c>)
+ 80067de:	6819      	ldr	r1, [r3, #0]
+ 80067e0:	42a9      	cmp	r1, r5
+ 80067e2:	bf38      	it	cc
+ 80067e4:	4629      	movcc	r1, r5
+ 80067e6:	4620      	mov	r0, r4
+ 80067e8:	f009 ff74 	bl	80106d4 <UTIL_TIMER_SetPeriod>
     UTIL_TIMER_Start(&TxTimer);
- 80067f2:	4620      	mov	r0, r4
- 80067f4:	f009 ff28 	bl	8010648 <UTIL_TIMER_Start>
+ 80067ec:	4620      	mov	r0, r4
+ 80067ee:	f009 ff2b 	bl	8010648 <UTIL_TIMER_Start>
 }
- 80067f8:	bd38      	pop	{r3, r4, r5, pc}
+ 80067f2:	bd38      	pop	{r3, r4, r5, pc}
   if ((JoinLedTimer.IsRunning) && (LmHandlerJoinStatus() == LORAMAC_HANDLER_SET))
- 80067fa:	f000 fff7 	bl	80077ec <LmHandlerJoinStatus>
- 80067fe:	2801      	cmp	r0, #1
- 8006800:	d1e0      	bne.n	80067c4 <SendTxData+0x3c>
+ 80067f4:	f000 fffa 	bl	80077ec <LmHandlerJoinStatus>
+ 80067f8:	2801      	cmp	r0, #1
+ 80067fa:	d1e0      	bne.n	80067be <SendTxData+0x36>
     UTIL_TIMER_Stop(&JoinLedTimer);
- 8006802:	4805      	ldr	r0, [pc, #20]	; (8006818 <SendTxData+0x90>)
- 8006804:	f009 fec0 	bl	8010588 <UTIL_TIMER_Stop>
- 8006808:	e7dc      	b.n	80067c4 <SendTxData+0x3c>
+ 80067fc:	4806      	ldr	r0, [pc, #24]	; (8006818 <SendTxData+0x90>)
+ 80067fe:	f009 fec3 	bl	8010588 <UTIL_TIMER_Stop>
+ 8006802:	e7dc      	b.n	80067be <SendTxData+0x36>
     nextTxIn = LmHandlerGetDutyCycleWaitTime();
- 800680a:	f000 ffe9 	bl	80077e0 <LmHandlerGetDutyCycleWaitTime>
- 800680e:	4605      	mov	r5, r0
+ 8006804:	f000 ffec 	bl	80077e0 <LmHandlerGetDutyCycleWaitTime>
+ 8006808:	4605      	mov	r5, r0
     if (nextTxIn > 0)
- 8006810:	e7e3      	b.n	80067da <SendTxData+0x52>
- 8006812:	bf00      	nop
- 8006814:	20000010 	.word	0x20000010
+ 800680a:	e7e3      	b.n	80067d4 <SendTxData+0x4c>
+ 800680c:	20000010 	.word	0x20000010
+ 8006810:	200005d4 	.word	0x200005d4
+ 8006814:	51eb851f 	.word	0x51eb851f
  8006818:	200009a4 	.word	0x200009a4
  800681c:	20000064 	.word	0x20000064
  8006820:	20000a04 	.word	0x20000a04

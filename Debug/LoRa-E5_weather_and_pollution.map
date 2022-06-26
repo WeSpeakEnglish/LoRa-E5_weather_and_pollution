@@ -14068,7 +14068,7 @@ LOAD c:/st/stm32cubeide_1.9.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
 LOAD c:/st/stm32cubeide_1.9.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a
 LOAD c:/st/stm32cubeide_1.9.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp\libgcc.a
 
-.debug_info     0x0000000000000000    0x53e3b
+.debug_info     0x0000000000000000    0x53e1d
  .debug_info    0x0000000000000000      0xb3d ./Core/Src/adc.o
  .debug_info    0x0000000000000b3d      0xad5 ./Core/Src/adc_if.o
  .debug_info    0x0000000000001612      0x66e ./Core/Src/dma.o
@@ -14108,39 +14108,39 @@ LOAD c:/st/stm32cubeide_1.9.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_info    0x000000000001e420     0x6326 ./Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_uart.o
  .debug_info    0x0000000000024746     0x12ee ./Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_uart_ex.o
  .debug_info    0x0000000000025a34      0x110 ./LoRaWAN/App/app_lorawan.o
- .debug_info    0x0000000000025b44     0x1cf0 ./LoRaWAN/App/lora_app.o
- .debug_info    0x0000000000027834      0x218 ./LoRaWAN/App/lora_info.o
- .debug_info    0x0000000000027a4c      0x311 ./LoRaWAN/Target/radio_board_if.o
- .debug_info    0x0000000000027d5d      0x650 ./Middlewares/Third_Party/LoRaWAN/Crypto/cmac.o
- .debug_info    0x00000000000283ad      0x695 ./Middlewares/Third_Party/LoRaWAN/Crypto/lorawan_aes.o
- .debug_info    0x0000000000028a42     0x1f30 ./Middlewares/Third_Party/LoRaWAN/Crypto/soft-se.o
- .debug_info    0x000000000002a972     0x481c ./Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.o
- .debug_info    0x000000000002f18e      0x140 ./Middlewares/Third_Party/LoRaWAN/LmHandler/NvmDataMgmt.o
- .debug_info    0x000000000002f2ce     0x239a ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.o
- .debug_info    0x0000000000031668     0x86ca ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMac.o
- .debug_info    0x0000000000039d32      0x87d ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacAdr.o
- .debug_info    0x000000000003a5af     0x1d7c ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacClassB.o
- .debug_info    0x000000000003c32b      0x9f2 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCommands.o
- .debug_info    0x000000000003cd1d      0xc93 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.o
- .debug_info    0x000000000003d9b0     0x1cd1 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCrypto.o
- .debug_info    0x000000000003f681      0x53c ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacParser.o
- .debug_info    0x000000000003fbbd      0x6ae ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacSerializer.o
- .debug_info    0x000000000004026b     0x1975 ./Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.o
- .debug_info    0x0000000000041be0     0x26e4 ./Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCommon.o
- .debug_info    0x00000000000442c4     0x3254 ./Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU868.o
- .debug_info    0x0000000000047518      0x443 ./Middlewares/Third_Party/LoRaWAN/Utilities/utilities.o
- .debug_info    0x000000000004795b     0x470c ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio.o
- .debug_info    0x000000000004c067     0x32dc ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_driver.o
- .debug_info    0x000000000004f343      0xcdc ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_fw.o
- .debug_info    0x000000000005001f      0x4c1 ./Utilities/lpm/tiny_lpm/stm32_lpm.o
- .debug_info    0x00000000000504e0      0x210 ./Utilities/misc/stm32_mem.o
- .debug_info    0x00000000000506f0      0x9fc ./Utilities/misc/stm32_systime.o
- .debug_info    0x00000000000510ec      0x405 ./Utilities/misc/stm32_tiny_vsnprintf.o
- .debug_info    0x00000000000514f1      0xcad ./Utilities/sequencer/stm32_seq.o
- .debug_info    0x000000000005219e      0xc00 ./Utilities/timer/stm32_timer.o
- .debug_info    0x0000000000052d9e     0x109d ./Utilities/trace/adv_trace/stm32_adv_trace.o
+ .debug_info    0x0000000000025b44     0x1cd2 ./LoRaWAN/App/lora_app.o
+ .debug_info    0x0000000000027816      0x218 ./LoRaWAN/App/lora_info.o
+ .debug_info    0x0000000000027a2e      0x311 ./LoRaWAN/Target/radio_board_if.o
+ .debug_info    0x0000000000027d3f      0x650 ./Middlewares/Third_Party/LoRaWAN/Crypto/cmac.o
+ .debug_info    0x000000000002838f      0x695 ./Middlewares/Third_Party/LoRaWAN/Crypto/lorawan_aes.o
+ .debug_info    0x0000000000028a24     0x1f30 ./Middlewares/Third_Party/LoRaWAN/Crypto/soft-se.o
+ .debug_info    0x000000000002a954     0x481c ./Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.o
+ .debug_info    0x000000000002f170      0x140 ./Middlewares/Third_Party/LoRaWAN/LmHandler/NvmDataMgmt.o
+ .debug_info    0x000000000002f2b0     0x239a ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.o
+ .debug_info    0x000000000003164a     0x86ca ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMac.o
+ .debug_info    0x0000000000039d14      0x87d ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacAdr.o
+ .debug_info    0x000000000003a591     0x1d7c ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacClassB.o
+ .debug_info    0x000000000003c30d      0x9f2 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCommands.o
+ .debug_info    0x000000000003ccff      0xc93 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.o
+ .debug_info    0x000000000003d992     0x1cd1 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCrypto.o
+ .debug_info    0x000000000003f663      0x53c ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacParser.o
+ .debug_info    0x000000000003fb9f      0x6ae ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacSerializer.o
+ .debug_info    0x000000000004024d     0x1975 ./Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.o
+ .debug_info    0x0000000000041bc2     0x26e4 ./Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCommon.o
+ .debug_info    0x00000000000442a6     0x3254 ./Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU868.o
+ .debug_info    0x00000000000474fa      0x443 ./Middlewares/Third_Party/LoRaWAN/Utilities/utilities.o
+ .debug_info    0x000000000004793d     0x470c ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio.o
+ .debug_info    0x000000000004c049     0x32dc ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_driver.o
+ .debug_info    0x000000000004f325      0xcdc ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_fw.o
+ .debug_info    0x0000000000050001      0x4c1 ./Utilities/lpm/tiny_lpm/stm32_lpm.o
+ .debug_info    0x00000000000504c2      0x210 ./Utilities/misc/stm32_mem.o
+ .debug_info    0x00000000000506d2      0x9fc ./Utilities/misc/stm32_systime.o
+ .debug_info    0x00000000000510ce      0x405 ./Utilities/misc/stm32_tiny_vsnprintf.o
+ .debug_info    0x00000000000514d3      0xcad ./Utilities/sequencer/stm32_seq.o
+ .debug_info    0x0000000000052180      0xc00 ./Utilities/timer/stm32_timer.o
+ .debug_info    0x0000000000052d80     0x109d ./Utilities/trace/adv_trace/stm32_adv_trace.o
 
-.debug_abbrev   0x0000000000000000     0xbec6
+.debug_abbrev   0x0000000000000000     0xbed9
  .debug_abbrev  0x0000000000000000      0x255 ./Core/Src/adc.o
  .debug_abbrev  0x0000000000000255      0x23b ./Core/Src/adc_if.o
  .debug_abbrev  0x0000000000000490      0x19b ./Core/Src/dma.o
@@ -14180,39 +14180,39 @@ LOAD c:/st/stm32cubeide_1.9.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_abbrev  0x00000000000059ec      0x3aa ./Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_uart.o
  .debug_abbrev  0x0000000000005d96      0x34f ./Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_uart_ex.o
  .debug_abbrev  0x00000000000060e5       0xc3 ./LoRaWAN/App/app_lorawan.o
- .debug_abbrev  0x00000000000061a8      0x39f ./LoRaWAN/App/lora_app.o
- .debug_abbrev  0x0000000000006547      0x136 ./LoRaWAN/App/lora_info.o
- .debug_abbrev  0x000000000000667d      0x10e ./LoRaWAN/Target/radio_board_if.o
- .debug_abbrev  0x000000000000678b      0x1d3 ./Middlewares/Third_Party/LoRaWAN/Crypto/cmac.o
- .debug_abbrev  0x000000000000695e      0x22c ./Middlewares/Third_Party/LoRaWAN/Crypto/lorawan_aes.o
- .debug_abbrev  0x0000000000006b8a      0x3f7 ./Middlewares/Third_Party/LoRaWAN/Crypto/soft-se.o
- .debug_abbrev  0x0000000000006f81      0x572 ./Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.o
- .debug_abbrev  0x00000000000074f3       0xaa ./Middlewares/Third_Party/LoRaWAN/LmHandler/NvmDataMgmt.o
- .debug_abbrev  0x000000000000759d      0x3eb ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.o
- .debug_abbrev  0x0000000000007988      0x6ca ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMac.o
- .debug_abbrev  0x0000000000008052      0x231 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacAdr.o
- .debug_abbrev  0x0000000000008283      0x283 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacClassB.o
- .debug_abbrev  0x0000000000008506      0x2c4 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCommands.o
- .debug_abbrev  0x00000000000087ca      0x31d ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.o
- .debug_abbrev  0x0000000000008ae7      0x436 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCrypto.o
- .debug_abbrev  0x0000000000008f1d      0x20d ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacParser.o
- .debug_abbrev  0x000000000000912a      0x20d ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacSerializer.o
- .debug_abbrev  0x0000000000009337      0x24b ./Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.o
- .debug_abbrev  0x0000000000009582      0x4f5 ./Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCommon.o
- .debug_abbrev  0x0000000000009a77      0x47a ./Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU868.o
- .debug_abbrev  0x0000000000009ef1      0x14a ./Middlewares/Third_Party/LoRaWAN/Utilities/utilities.o
- .debug_abbrev  0x000000000000a03b      0x4ed ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio.o
- .debug_abbrev  0x000000000000a528      0x467 ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_driver.o
- .debug_abbrev  0x000000000000a98f      0x242 ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_fw.o
- .debug_abbrev  0x000000000000abd1      0x1f0 ./Utilities/lpm/tiny_lpm/stm32_lpm.o
- .debug_abbrev  0x000000000000adc1       0xd4 ./Utilities/misc/stm32_mem.o
- .debug_abbrev  0x000000000000ae95      0x3dd ./Utilities/misc/stm32_systime.o
- .debug_abbrev  0x000000000000b272      0x1cd ./Utilities/misc/stm32_tiny_vsnprintf.o
- .debug_abbrev  0x000000000000b43f      0x2f3 ./Utilities/sequencer/stm32_seq.o
- .debug_abbrev  0x000000000000b732      0x339 ./Utilities/timer/stm32_timer.o
- .debug_abbrev  0x000000000000ba6b      0x45b ./Utilities/trace/adv_trace/stm32_adv_trace.o
+ .debug_abbrev  0x00000000000061a8      0x3b2 ./LoRaWAN/App/lora_app.o
+ .debug_abbrev  0x000000000000655a      0x136 ./LoRaWAN/App/lora_info.o
+ .debug_abbrev  0x0000000000006690      0x10e ./LoRaWAN/Target/radio_board_if.o
+ .debug_abbrev  0x000000000000679e      0x1d3 ./Middlewares/Third_Party/LoRaWAN/Crypto/cmac.o
+ .debug_abbrev  0x0000000000006971      0x22c ./Middlewares/Third_Party/LoRaWAN/Crypto/lorawan_aes.o
+ .debug_abbrev  0x0000000000006b9d      0x3f7 ./Middlewares/Third_Party/LoRaWAN/Crypto/soft-se.o
+ .debug_abbrev  0x0000000000006f94      0x572 ./Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.o
+ .debug_abbrev  0x0000000000007506       0xaa ./Middlewares/Third_Party/LoRaWAN/LmHandler/NvmDataMgmt.o
+ .debug_abbrev  0x00000000000075b0      0x3eb ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.o
+ .debug_abbrev  0x000000000000799b      0x6ca ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMac.o
+ .debug_abbrev  0x0000000000008065      0x231 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacAdr.o
+ .debug_abbrev  0x0000000000008296      0x283 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacClassB.o
+ .debug_abbrev  0x0000000000008519      0x2c4 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCommands.o
+ .debug_abbrev  0x00000000000087dd      0x31d ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.o
+ .debug_abbrev  0x0000000000008afa      0x436 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCrypto.o
+ .debug_abbrev  0x0000000000008f30      0x20d ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacParser.o
+ .debug_abbrev  0x000000000000913d      0x20d ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacSerializer.o
+ .debug_abbrev  0x000000000000934a      0x24b ./Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.o
+ .debug_abbrev  0x0000000000009595      0x4f5 ./Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCommon.o
+ .debug_abbrev  0x0000000000009a8a      0x47a ./Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU868.o
+ .debug_abbrev  0x0000000000009f04      0x14a ./Middlewares/Third_Party/LoRaWAN/Utilities/utilities.o
+ .debug_abbrev  0x000000000000a04e      0x4ed ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio.o
+ .debug_abbrev  0x000000000000a53b      0x467 ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_driver.o
+ .debug_abbrev  0x000000000000a9a2      0x242 ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_fw.o
+ .debug_abbrev  0x000000000000abe4      0x1f0 ./Utilities/lpm/tiny_lpm/stm32_lpm.o
+ .debug_abbrev  0x000000000000add4       0xd4 ./Utilities/misc/stm32_mem.o
+ .debug_abbrev  0x000000000000aea8      0x3dd ./Utilities/misc/stm32_systime.o
+ .debug_abbrev  0x000000000000b285      0x1cd ./Utilities/misc/stm32_tiny_vsnprintf.o
+ .debug_abbrev  0x000000000000b452      0x2f3 ./Utilities/sequencer/stm32_seq.o
+ .debug_abbrev  0x000000000000b745      0x339 ./Utilities/timer/stm32_timer.o
+ .debug_abbrev  0x000000000000ba7e      0x45b ./Utilities/trace/adv_trace/stm32_adv_trace.o
 
-.debug_loc      0x0000000000000000    0x25321
+.debug_loc      0x0000000000000000    0x252db
  .debug_loc     0x0000000000000000       0x30 ./Core/Src/adc.o
  .debug_loc     0x0000000000000030      0x13d ./Core/Src/adc_if.o
  .debug_loc     0x000000000000016d       0x2c ./Core/Src/dma.o
@@ -14247,35 +14247,35 @@ LOAD c:/st/stm32cubeide_1.9.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_loc     0x000000000000a3f1      0xca0 ./Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_subghz.o
  .debug_loc     0x000000000000b091     0x5d7a ./Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_uart.o
  .debug_loc     0x0000000000010e0b      0xd6b ./Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_uart_ex.o
- .debug_loc     0x0000000000011b76      0x3cf ./LoRaWAN/App/lora_app.o
- .debug_loc     0x0000000000011f45       0x4a ./LoRaWAN/Target/radio_board_if.o
- .debug_loc     0x0000000000011f8f      0x2e5 ./Middlewares/Third_Party/LoRaWAN/Crypto/cmac.o
- .debug_loc     0x0000000000012274      0x5f9 ./Middlewares/Third_Party/LoRaWAN/Crypto/lorawan_aes.o
- .debug_loc     0x000000000001286d      0xf56 ./Middlewares/Third_Party/LoRaWAN/Crypto/soft-se.o
- .debug_loc     0x00000000000137c3     0x1292 ./Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.o
- .debug_loc     0x0000000000014a55      0x20a ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.o
- .debug_loc     0x0000000000014c5f     0x3188 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMac.o
- .debug_loc     0x0000000000017de7      0x2c2 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacAdr.o
- .debug_loc     0x00000000000180a9      0x103 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacClassB.o
- .debug_loc     0x00000000000181ac      0xa70 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCommands.o
- .debug_loc     0x0000000000018c1c      0x46c ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.o
- .debug_loc     0x0000000000019088     0x1591 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCrypto.o
- .debug_loc     0x000000000001a619      0x266 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacParser.o
- .debug_loc     0x000000000001a87f      0x4e1 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacSerializer.o
- .debug_loc     0x000000000001ad60      0xaed ./Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.o
- .debug_loc     0x000000000001b84d     0x1a2d ./Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCommon.o
- .debug_loc     0x000000000001d27a      0xf87 ./Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU868.o
- .debug_loc     0x000000000001e201      0x570 ./Middlewares/Third_Party/LoRaWAN/Utilities/utilities.o
- .debug_loc     0x000000000001e771     0x1adb ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio.o
- .debug_loc     0x000000000002024c     0x17b3 ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_driver.o
- .debug_loc     0x00000000000219ff       0xde ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_fw.o
- .debug_loc     0x0000000000021add      0x219 ./Utilities/lpm/tiny_lpm/stm32_lpm.o
- .debug_loc     0x0000000000021cf6      0x2ad ./Utilities/misc/stm32_mem.o
- .debug_loc     0x0000000000021fa3      0xadb ./Utilities/misc/stm32_systime.o
- .debug_loc     0x0000000000022a7e      0xc25 ./Utilities/misc/stm32_tiny_vsnprintf.o
- .debug_loc     0x00000000000236a3      0x7b1 ./Utilities/sequencer/stm32_seq.o
- .debug_loc     0x0000000000023e54      0xa29 ./Utilities/timer/stm32_timer.o
- .debug_loc     0x000000000002487d      0xaa4 ./Utilities/trace/adv_trace/stm32_adv_trace.o
+ .debug_loc     0x0000000000011b76      0x389 ./LoRaWAN/App/lora_app.o
+ .debug_loc     0x0000000000011eff       0x4a ./LoRaWAN/Target/radio_board_if.o
+ .debug_loc     0x0000000000011f49      0x2e5 ./Middlewares/Third_Party/LoRaWAN/Crypto/cmac.o
+ .debug_loc     0x000000000001222e      0x5f9 ./Middlewares/Third_Party/LoRaWAN/Crypto/lorawan_aes.o
+ .debug_loc     0x0000000000012827      0xf56 ./Middlewares/Third_Party/LoRaWAN/Crypto/soft-se.o
+ .debug_loc     0x000000000001377d     0x1292 ./Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.o
+ .debug_loc     0x0000000000014a0f      0x20a ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.o
+ .debug_loc     0x0000000000014c19     0x3188 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMac.o
+ .debug_loc     0x0000000000017da1      0x2c2 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacAdr.o
+ .debug_loc     0x0000000000018063      0x103 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacClassB.o
+ .debug_loc     0x0000000000018166      0xa70 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCommands.o
+ .debug_loc     0x0000000000018bd6      0x46c ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.o
+ .debug_loc     0x0000000000019042     0x1591 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCrypto.o
+ .debug_loc     0x000000000001a5d3      0x266 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacParser.o
+ .debug_loc     0x000000000001a839      0x4e1 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacSerializer.o
+ .debug_loc     0x000000000001ad1a      0xaed ./Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.o
+ .debug_loc     0x000000000001b807     0x1a2d ./Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCommon.o
+ .debug_loc     0x000000000001d234      0xf87 ./Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU868.o
+ .debug_loc     0x000000000001e1bb      0x570 ./Middlewares/Third_Party/LoRaWAN/Utilities/utilities.o
+ .debug_loc     0x000000000001e72b     0x1adb ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio.o
+ .debug_loc     0x0000000000020206     0x17b3 ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_driver.o
+ .debug_loc     0x00000000000219b9       0xde ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_fw.o
+ .debug_loc     0x0000000000021a97      0x219 ./Utilities/lpm/tiny_lpm/stm32_lpm.o
+ .debug_loc     0x0000000000021cb0      0x2ad ./Utilities/misc/stm32_mem.o
+ .debug_loc     0x0000000000021f5d      0xadb ./Utilities/misc/stm32_systime.o
+ .debug_loc     0x0000000000022a38      0xc25 ./Utilities/misc/stm32_tiny_vsnprintf.o
+ .debug_loc     0x000000000002365d      0x7b1 ./Utilities/sequencer/stm32_seq.o
+ .debug_loc     0x0000000000023e0e      0xa29 ./Utilities/timer/stm32_timer.o
+ .debug_loc     0x0000000000024837      0xaa4 ./Utilities/trace/adv_trace/stm32_adv_trace.o
 
 .debug_aranges  0x0000000000000000     0x2768
  .debug_aranges
@@ -14713,7 +14713,7 @@ LOAD c:/st/stm32cubeide_1.9.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_macro   0x000000000002764b      0x1a2 ./Utilities/timer/stm32_timer.o
  .debug_macro   0x00000000000277ed      0x23b ./Utilities/trace/adv_trace/stm32_adv_trace.o
 
-.debug_line     0x0000000000000000    0x4497c
+.debug_line     0x0000000000000000    0x4493e
  .debug_line    0x0000000000000000      0x8e7 ./Core/Src/adc.o
  .debug_line    0x00000000000008e7      0xb62 ./Core/Src/adc_if.o
  .debug_line    0x0000000000001449      0x80d ./Core/Src/dma.o
@@ -14753,37 +14753,37 @@ LOAD c:/st/stm32cubeide_1.9.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_line    0x000000000001eaa7     0x67d0 ./Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_uart.o
  .debug_line    0x0000000000025277     0x12a3 ./Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_uart_ex.o
  .debug_line    0x000000000002651a      0x58d ./LoRaWAN/App/app_lorawan.o
- .debug_line    0x0000000000026aa7     0x12bf ./LoRaWAN/App/lora_app.o
- .debug_line    0x0000000000027d66      0x7df ./LoRaWAN/App/lora_info.o
- .debug_line    0x0000000000028545      0x98a ./LoRaWAN/Target/radio_board_if.o
- .debug_line    0x0000000000028ecf      0x83e ./Middlewares/Third_Party/LoRaWAN/Crypto/cmac.o
- .debug_line    0x000000000002970d      0xa76 ./Middlewares/Third_Party/LoRaWAN/Crypto/lorawan_aes.o
- .debug_line    0x000000000002a183      0xe37 ./Middlewares/Third_Party/LoRaWAN/Crypto/soft-se.o
- .debug_line    0x000000000002afba     0x2006 ./Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.o
- .debug_line    0x000000000002cfc0      0x7a5 ./Middlewares/Third_Party/LoRaWAN/LmHandler/NvmDataMgmt.o
- .debug_line    0x000000000002d765     0x127b ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.o
- .debug_line    0x000000000002e9e0     0x42a4 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMac.o
- .debug_line    0x0000000000032c84      0x8b0 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacAdr.o
- .debug_line    0x0000000000033534      0xb24 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacClassB.o
- .debug_line    0x0000000000034058      0xc6a ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCommands.o
- .debug_line    0x0000000000034cc2      0xbc4 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.o
- .debug_line    0x0000000000035886     0x12fe ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCrypto.o
- .debug_line    0x0000000000036b84      0x799 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacParser.o
- .debug_line    0x000000000003731d      0x8c3 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacSerializer.o
- .debug_line    0x0000000000037be0      0xbb7 ./Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.o
- .debug_line    0x0000000000038797     0x12bf ./Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCommon.o
- .debug_line    0x0000000000039a56     0x14f6 ./Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU868.o
- .debug_line    0x000000000003af4c      0x7bc ./Middlewares/Third_Party/LoRaWAN/Utilities/utilities.o
- .debug_line    0x000000000003b708     0x21b0 ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio.o
- .debug_line    0x000000000003d8b8     0x1d4c ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_driver.o
- .debug_line    0x000000000003f604      0xc18 ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_fw.o
- .debug_line    0x000000000004021c      0x701 ./Utilities/lpm/tiny_lpm/stm32_lpm.o
- .debug_line    0x000000000004091d      0x556 ./Utilities/misc/stm32_mem.o
- .debug_line    0x0000000000040e73      0xa76 ./Utilities/misc/stm32_systime.o
- .debug_line    0x00000000000418e9      0x89f ./Utilities/misc/stm32_tiny_vsnprintf.o
- .debug_line    0x0000000000042188      0xc58 ./Utilities/sequencer/stm32_seq.o
- .debug_line    0x0000000000042de0      0xc52 ./Utilities/timer/stm32_timer.o
- .debug_line    0x0000000000043a32      0xf4a ./Utilities/trace/adv_trace/stm32_adv_trace.o
+ .debug_line    0x0000000000026aa7     0x1281 ./LoRaWAN/App/lora_app.o
+ .debug_line    0x0000000000027d28      0x7df ./LoRaWAN/App/lora_info.o
+ .debug_line    0x0000000000028507      0x98a ./LoRaWAN/Target/radio_board_if.o
+ .debug_line    0x0000000000028e91      0x83e ./Middlewares/Third_Party/LoRaWAN/Crypto/cmac.o
+ .debug_line    0x00000000000296cf      0xa76 ./Middlewares/Third_Party/LoRaWAN/Crypto/lorawan_aes.o
+ .debug_line    0x000000000002a145      0xe37 ./Middlewares/Third_Party/LoRaWAN/Crypto/soft-se.o
+ .debug_line    0x000000000002af7c     0x2006 ./Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.o
+ .debug_line    0x000000000002cf82      0x7a5 ./Middlewares/Third_Party/LoRaWAN/LmHandler/NvmDataMgmt.o
+ .debug_line    0x000000000002d727     0x127b ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.o
+ .debug_line    0x000000000002e9a2     0x42a4 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMac.o
+ .debug_line    0x0000000000032c46      0x8b0 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacAdr.o
+ .debug_line    0x00000000000334f6      0xb24 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacClassB.o
+ .debug_line    0x000000000003401a      0xc6a ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCommands.o
+ .debug_line    0x0000000000034c84      0xbc4 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.o
+ .debug_line    0x0000000000035848     0x12fe ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCrypto.o
+ .debug_line    0x0000000000036b46      0x799 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacParser.o
+ .debug_line    0x00000000000372df      0x8c3 ./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacSerializer.o
+ .debug_line    0x0000000000037ba2      0xbb7 ./Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.o
+ .debug_line    0x0000000000038759     0x12bf ./Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCommon.o
+ .debug_line    0x0000000000039a18     0x14f6 ./Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU868.o
+ .debug_line    0x000000000003af0e      0x7bc ./Middlewares/Third_Party/LoRaWAN/Utilities/utilities.o
+ .debug_line    0x000000000003b6ca     0x21b0 ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio.o
+ .debug_line    0x000000000003d87a     0x1d4c ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_driver.o
+ .debug_line    0x000000000003f5c6      0xc18 ./Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_fw.o
+ .debug_line    0x00000000000401de      0x701 ./Utilities/lpm/tiny_lpm/stm32_lpm.o
+ .debug_line    0x00000000000408df      0x556 ./Utilities/misc/stm32_mem.o
+ .debug_line    0x0000000000040e35      0xa76 ./Utilities/misc/stm32_systime.o
+ .debug_line    0x00000000000418ab      0x89f ./Utilities/misc/stm32_tiny_vsnprintf.o
+ .debug_line    0x000000000004214a      0xc58 ./Utilities/sequencer/stm32_seq.o
+ .debug_line    0x0000000000042da2      0xc52 ./Utilities/timer/stm32_timer.o
+ .debug_line    0x00000000000439f4      0xf4a ./Utilities/trace/adv_trace/stm32_adv_trace.o
 
 .debug_str      0x0000000000000000    0xc93fe
  .debug_str     0x0000000000000000    0xa6094 ./Core/Src/adc.o
@@ -14865,7 +14865,7 @@ LOAD c:/st/stm32cubeide_1.9.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_str     0x00000000000b5e9b      0x230 ./LoRaWAN/App/app_lorawan.o
                                        0x7d3f (size before relaxing)
  .debug_str     0x00000000000b60cb     0x1c31 ./LoRaWAN/App/lora_app.o
-                                      0xad6b8 (size before relaxing)
+                                      0xad6be (size before relaxing)
  .debug_str     0x00000000000b7cfc      0x259 ./LoRaWAN/App/lora_info.o
                                        0x93d3 (size before relaxing)
  .debug_str     0x00000000000b7f55      0x1a1 ./LoRaWAN/Target/radio_board_if.o
