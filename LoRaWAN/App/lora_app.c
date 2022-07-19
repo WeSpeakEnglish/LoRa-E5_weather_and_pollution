@@ -547,8 +547,7 @@ static void SendTxData(void)
 
 
   uint16_t pressure = 0;
-  int16_t temperature = 0;
-  uint16_t humidity = 0;
+
   uint32_t i = 0;
 
 
@@ -559,7 +558,13 @@ static void SendTxData(void)
 
   AppData.Buffer[i++] = PM2_5/100;
   AppData.Buffer[i++] = PM2_5%100;
-
+  int16_t tempVar;
+  tempVar = ((int16_t)(temp*100.0));
+  AppData.Buffer[i++] = tempVar/100;
+  AppData.Buffer[i++] = tempVar%100;
+  tempVar = ((int16_t)(humidity*100.0));
+  AppData.Buffer[i++] = tempVar/100;
+  AppData.Buffer[i++] = tempVar%100;
 
 
   AppData.BufferSize = i;

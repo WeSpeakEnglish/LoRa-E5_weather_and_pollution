@@ -125,6 +125,8 @@ extern "C" {
 /* Exported macros -----------------------------------------------------------*/
 /* USER CODE BEGIN EM */
 extern uint16_t PM2_5;
+extern float temp;
+extern float humidity;
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/

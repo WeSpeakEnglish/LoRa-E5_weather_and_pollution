@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "i2c.h"
 #include "app_lorawan.h"
 #include "usart.h"
 #include "gpio.h"
@@ -51,7 +52,9 @@ uint8_t aRXBufferUser[RX_BUFFER_SIZE];
 uint8_t mainBuffer[RX_BUFFER_SIZE];
 
 uint8_t receivedFlag = 1;
-uint16_t PM2_5 = 0;
+uint16_t PM2_5;
+float temp;
+float humidity;
 
 extern DMA_HandleTypeDef hdma_usart2_rx;
 /* USER CODE END PV */
@@ -74,7 +77,7 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	static uint16_t count = 1;
+//	static uint16_t count = 1;
 
   /* USER CODE END 1 */
 
@@ -98,8 +101,15 @@ int main(void)
   MX_GPIO_Init();
   MX_LoRaWAN_Init();
   MX_USART2_UART_Init();
+  MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
   UART2_SET =0;
+
+  uint8_t SHT40_cmd = 0xFD;
+  uint8_t SHT40_dataRX[6];
+  uint16_t temp_hword; // teporarly temperature half word
+  uint16_t th_hword;   // teporarly humidy half  word
+
 
   HAL_UARTEx_ReceiveToIdle_DMA(&huart2, aRXBufferUser, RX_BUFFER_SIZE);
   __HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);
@@ -110,7 +120,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
+	  HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(0x44 << 1),(uint8_t*)&SHT40_cmd, 1, 100);
     /* USER CODE END WHILE */
     MX_LoRaWAN_Process();
 
@@ -121,7 +131,14 @@ int main(void)
 	__HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);
 	PM2_5 = mainBuffer[6]*256+mainBuffer[7];
     }
+    HAL_I2C_Master_Receive(&hi2c2, (uint16_t)(0x44 << 1),SHT40_dataRX, 6, 100);
+    temp_hword = SHT40_dataRX[0] * 256 + SHT40_dataRX[1];
+    th_hword = SHT40_dataRX[3] * 256 + SHT40_dataRX[4];
+    temp  = -45.0 + 175.0 * (float)temp_hword/(float)65535.0;
+    humidity = -6.0 + 125.0 * (float)th_hword/(float)65535.0;
   }
+
+
   /* USER CODE END 3 */
 }
 
@@ -143,7 +160,7 @@ void SystemClock_Config(void)
   */
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
-  /** Initializes the CPU, AHB and APB busses clocks
+  /** Initializes the CPU, AHB and APB buses clocks
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE|RCC_OSCILLATORTYPE_LSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_BYPASS_PWR;
