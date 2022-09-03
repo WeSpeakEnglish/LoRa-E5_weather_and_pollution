@@ -20,6 +20,7 @@
 #include "main.h"
 #include "i2c.h"
 #include "app_lorawan.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -55,6 +56,8 @@ uint8_t receivedFlag = 1;
 uint16_t PM2_5;
 float temp;
 float humidity;
+char PM_measure_flag = 1;
+static int counter = 0;
 
 extern DMA_HandleTypeDef hdma_usart2_rx;
 /* USER CODE END PV */
@@ -102,14 +105,20 @@ int main(void)
   MX_LoRaWAN_Init();
   MX_USART2_UART_Init();
   MX_I2C2_Init();
+  MX_TIM16_Init();
+  MX_TIM17_Init();
   /* USER CODE BEGIN 2 */
+
   UART2_SET =0;
+
 
   uint8_t SHT40_cmd = 0xFD;
   uint8_t SHT40_dataRX[6];
   uint16_t temp_hword; // teporarly temperature half word
   uint16_t th_hword;   // teporarly humidy half  word
 
+
+  F1_QueueIni(); // init Function queue
 
   HAL_UARTEx_ReceiveToIdle_DMA(&huart2, aRXBufferUser, RX_BUFFER_SIZE);
   __HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);
@@ -118,24 +127,43 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+ // HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+//  HAL_Delay(300);
+//  __HAL_TIM_ENABLE_IT(&htim16, TIM_IT_UPDATE);
+
+  HAL_TIM_Base_Start_IT(&htim16);
+
+
   while (1)
   {
-	  HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(0x44 << 1),(uint8_t*)&SHT40_cmd, 1, 100);
-    /* USER CODE END WHILE */
+
+	HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(0x44 << 1),(uint8_t*)&SHT40_cmd, 1, 100);
+
+	/* USER CODE END WHILE */
     MX_LoRaWAN_Process();
 
     /* USER CODE BEGIN 3 */
-    if(UART2_SET){
-    	UART2_SET = 0;
-    	HAL_UARTEx_ReceiveToIdle_DMA(&huart2, aRXBufferUser, RX_BUFFER_SIZE);
-	__HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);
-	PM2_5 = mainBuffer[6]*256+mainBuffer[7];
-    }
+
+
+
+    if(PM_measure_flag){
+       UART2_SET = 0;
+       HAL_UARTEx_ReceiveToIdle_DMA(&huart2, aRXBufferUser, RX_BUFFER_SIZE);
+	   __HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);
+	   PM2_5 = mainBuffer[6]*256+mainBuffer[7];
+
+      }
+    F1_pull()();
+
+
     HAL_I2C_Master_Receive(&hi2c2, (uint16_t)(0x44 << 1),SHT40_dataRX, 6, 100);
     temp_hword = SHT40_dataRX[0] * 256 + SHT40_dataRX[1];
     th_hword = SHT40_dataRX[3] * 256 + SHT40_dataRX[4];
     temp  = -45.0 + 175.0 * (float)temp_hword/(float)65535.0;
     humidity = -6.0 + 125.0 * (float)th_hword/(float)65535.0;
+
+   //
   }
 
 
@@ -204,6 +232,45 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 
 	}
 }
+
+void EnablePM_sens(void){
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+
+}
+
+void DisablePM_sens(void){
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+
+
+}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+
+   if (htim == &htim16)
+   {
+	  HAL_ResumeTick();
+      counter++;
+      switch(counter){
+      case 820:
+    	  F1_push(EnablePM_sens);
+    	  break;
+      case 840:
+    	  PM_measure_flag = 1;
+    	  break;
+      case 860:
+    	  F1_push(DisablePM_sens);
+    	  PM_measure_flag = 0;
+      }
+
+      counter %= 900;
+
+   //   __HAL_TIM_CLEAR_IT(&htim16, TIM_IT_UPDATE);
+  //    __HAL_TIM_ENABLE_IT(&htim16, TIM_IT_UPDATE);
+   }
+}
+
+
 /* USER CODE END 4 */
 
 /**

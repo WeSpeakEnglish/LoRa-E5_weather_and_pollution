@@ -31,12 +31,13 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-extern  uint8_t UART2_SET;
+#include "nortos.h"
+
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
-
+extern  uint8_t UART2_SET;
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
@@ -75,6 +76,8 @@ void Error_Handler(void);
 #define BUT1_EXTI_IRQn EXTI15_10_IRQn
 #define USARTx_TX_Pin GPIO_PIN_6
 #define USARTx_TX_GPIO_Port GPIOB
+#define CONNECT_PM_SENSOR_Pin GPIO_PIN_9
+#define CONNECT_PM_SENSOR_GPIO_Port GPIOA
 #define DBG2_Pin GPIO_PIN_10
 #define DBG2_GPIO_Port GPIOB
 #define RF_CTRL1_Pin GPIO_PIN_4
