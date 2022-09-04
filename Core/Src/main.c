@@ -70,7 +70,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void MeasurePM_sens(void);
 /* USER CODE END 0 */
 
 /**
@@ -140,21 +140,15 @@ int main(void)
 
 	HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(0x44 << 1),(uint8_t*)&SHT40_cmd, 1, 100);
 
-	/* USER CODE END WHILE */
+    /* USER CODE END WHILE */
     MX_LoRaWAN_Process();
 
     /* USER CODE BEGIN 3 */
 
 
-
-    if(PM_measure_flag){
-       UART2_SET = 0;
-       HAL_UARTEx_ReceiveToIdle_DMA(&huart2, aRXBufferUser, RX_BUFFER_SIZE);
-	   __HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);
-	   PM2_5 = mainBuffer[6]*256+mainBuffer[7];
-
-      }
     F1_pull()();
+    MeasurePM_sens();
+
 
 
     HAL_I2C_Master_Receive(&hi2c2, (uint16_t)(0x44 << 1),SHT40_dataRX, 6, 100);
@@ -244,13 +238,22 @@ void DisablePM_sens(void){
 
 }
 
+void MeasurePM_sens(void){
+
+	if(PM_measure_flag){
+	       UART2_SET = 0;
+	       HAL_UARTEx_ReceiveToIdle_DMA(&huart2, aRXBufferUser, RX_BUFFER_SIZE);
+		   __HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);
+		   PM2_5 = mainBuffer[6]*256+mainBuffer[7];
+
+	      }
+}
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-
    if (htim == &htim16)
    {
-	  HAL_ResumeTick();
-      counter++;
+	  counter++;
       switch(counter){
       case 820:
     	  F1_push(EnablePM_sens);
@@ -264,9 +267,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       }
 
       counter %= 900;
-
-   //   __HAL_TIM_CLEAR_IT(&htim16, TIM_IT_UPDATE);
-  //    __HAL_TIM_ENABLE_IT(&htim16, TIM_IT_UPDATE);
    }
 }
 
