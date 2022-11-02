@@ -147,7 +147,7 @@ int main(void)
 
 
     F1_pull()();
-    MeasurePM_sens();
+
 
 
 
@@ -246,7 +246,7 @@ void MeasurePM_sens(void){
 		   __HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);
 		   PM2_5 = mainBuffer[6]*256+mainBuffer[7];
 
-	      }
+	     }
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
@@ -257,6 +257,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       switch(counter){
       case 820:
     	  F1_push(EnablePM_sens);
+    	  F1_push(MeasurePM_sens);
     	  break;
       case 840:
     	  PM_measure_flag = 1;
