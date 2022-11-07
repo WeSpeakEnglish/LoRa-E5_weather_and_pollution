@@ -24,10 +24,9 @@ Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN470.o: \
  ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacClassBNvm.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacHeaderTypes.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionNvm.h \
- ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN470A20.h \
- ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN470B20.h \
- ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN470A26.h \
- ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN470B26.h
+ ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionBaseUS.h \
+ ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMac.h \
+ ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacInterfaces.h
 ../Middlewares/Third_Party/SubGHz_Phy/radio.h:
 ../Middlewares/Third_Party/SubGHz_Phy/radio_ex.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN470.h:
@@ -57,7 +56,6 @@ Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN470.o: \
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacClassBNvm.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacHeaderTypes.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionNvm.h:
-../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN470A20.h:
-../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN470B20.h:
-../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN470A26.h:
-../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN470B26.h:
+../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionBaseUS.h:
+../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMac.h:
+../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacInterfaces.h:

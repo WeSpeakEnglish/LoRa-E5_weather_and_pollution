@@ -16,5 +16,6 @@
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionIN865.c:900:17:RegionIN865NextChannel	24	static
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionIN865.c:959:17:RegionIN865ChannelAdd	16	static
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionIN865.c:1022:6:RegionIN865ChannelsRemove	16	static
-../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionIN865.c:1066:9:RegionIN865ApplyDrOffset	16	static
+../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionIN865.c:1042:6:RegionIN865SetContinuousWave	16	static
+../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionIN865.c:1056:9:RegionIN865ApplyDrOffset	16	static
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionIN865.c:1082:6:RegionIN865RxBeaconSetup	16	static

@@ -55,7 +55,7 @@ extern "C" {
  * @brief LoRaWAN version definition
  * @note  possible values: 0x01000300 or 0x01000400
  */
-#define LORAMAC_SPECIFICATION_VERSION                   0x01000400
+#define LORAMAC_SPECIFICATION_VERSION                   0x01000300
 
 /* Region ------------------------------------*/
 /* the region listed here will be linked in the MW code */
@@ -91,7 +91,7 @@ extern "C" {
 #define CONTEXT_MANAGEMENT_ENABLED                      0
 
 /* Class B ------------------------------------*/
-#define LORAMAC_CLASSB_ENABLED                          0
+#define LORAMAC_CLASSB_ENABLED                          1
 
 #if ( LORAMAC_CLASSB_ENABLED == 1 )
 /* CLASS B LSE crystal calibration*/

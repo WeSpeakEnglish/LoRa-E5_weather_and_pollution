@@ -36,7 +36,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define RX_BUFFER_SIZE 20
+#define RX_BUFFER_SIZE 32
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -139,6 +139,7 @@ int main(void)
   {
 
 	HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(0x44 << 1),(uint8_t*)&SHT40_cmd, 1, 100);
+	MeasurePM_sens();
 
     /* USER CODE END WHILE */
     MX_LoRaWAN_Process();
@@ -218,7 +219,9 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 	if (huart->Instance == USART2)
 	{
 		if(aRXBufferUser[0]=='B'&& aRXBufferUser[1]=='M'){
-		memcpy(mainBuffer,aRXBufferUser,Size);
+		//memcpy(mainBuffer,aRXBufferUser,Size);
+		if((aRXBufferUser[30]<<8) + aRXBufferUser[31])
+			PM2_5 = aRXBufferUser[6]*256+aRXBufferUser[7];
 
 
 		}
@@ -244,7 +247,7 @@ void MeasurePM_sens(void){
 	       UART2_SET = 0;
 	       HAL_UARTEx_ReceiveToIdle_DMA(&huart2, aRXBufferUser, RX_BUFFER_SIZE);
 		   __HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);
-		   PM2_5 = mainBuffer[6]*256+mainBuffer[7];
+
 
 	     }
 }
@@ -257,10 +260,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       switch(counter){
       case 820:
     	  F1_push(EnablePM_sens);
-    	  F1_push(MeasurePM_sens);
+
     	  break;
       case 840:
-    	  PM_measure_flag = 1;
+     	  PM_measure_flag = 1;
+    	  F1_push(MeasurePM_sens);
     	  break;
       case 860:
     	  F1_push(DisablePM_sens);
