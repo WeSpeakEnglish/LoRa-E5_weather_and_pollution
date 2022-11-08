@@ -459,7 +459,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 static void OnRxData(LmHandlerAppData_t *appData, LmHandlerRxParams_t *params)
 {
   /* USER CODE BEGIN OnRxData_1 */
-  uint8_t RxPort = 0;
+ uint8_t RxPort = 0;
 
   if (params != NULL)
   {
