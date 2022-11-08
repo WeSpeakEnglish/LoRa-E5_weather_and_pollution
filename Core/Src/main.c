@@ -20,6 +20,7 @@
 #include "main.h"
 #include "i2c.h"
 #include "app_lorawan.h"
+#include "spi.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -27,6 +28,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "string.h"
+#include "NRF24L01.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,6 +62,20 @@ char PM_measure_flag = 1;
 static int counter = 0;
 
 extern DMA_HandleTypeDef hdma_usart2_rx;
+
+uint8_t RxAddress[] = {0x00,0xDD,0xCC,0xBB,0xAA}; //ADDR receiving
+uint8_t TxAddress[] = {0xEE,0xDD,0xCC,0xBB,0xAA}; //ADDR to which transmitting
+uint8_t TxData[] = "Hello World\n";
+
+uint8_t RxData[32];
+uint8_t data[50];
+
+uint8_t SHT40_cmd = 0xFD;
+uint8_t SHT40_dataRX[6];
+uint16_t temp_hword; // teporarly temperature half word
+uint16_t th_hword;   // teporarly humidy half  word
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -87,9 +103,10 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-		HAL_Init();
+  HAL_Init();
 
   /* USER CODE BEGIN Init */
+
 
   /* USER CODE END Init */
 
@@ -107,16 +124,18 @@ int main(void)
   MX_I2C2_Init();
   MX_TIM16_Init();
   MX_TIM17_Init();
+  MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
 
   UART2_SET =0;
 
+  NRF24_Init();
 
-  uint8_t SHT40_cmd = 0xFD;
-  uint8_t SHT40_dataRX[6];
-  uint16_t temp_hword; // teporarly temperature half word
-  uint16_t th_hword;   // teporarly humidy half  word
+  NRF24_RxMode(RxAddress, 10);
 
+ //  NRF24_TxMode(TxAddress, 10);
+
+   NRF24_ReadAll(data);
 
   F1_QueueIni(); // init Function queue
 
@@ -128,16 +147,12 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
- // HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
-//  HAL_Delay(300);
-//  __HAL_TIM_ENABLE_IT(&htim16, TIM_IT_UPDATE);
 
   HAL_TIM_Base_Start_IT(&htim16);
 
 
   while (1)
   {
-
 	HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(0x44 << 1),(uint8_t*)&SHT40_cmd, 1, 100);
 	MeasurePM_sens();
 
@@ -157,6 +172,15 @@ int main(void)
     th_hword = SHT40_dataRX[3] * 256 + SHT40_dataRX[4];
     temp  = -45.0 + 175.0 * (float)temp_hword/(float)65535.0;
     humidity = -6.0 + 125.0 * (float)th_hword/(float)65535.0;
+
+
+    if (isDataAvailable(2) == 1)
+   	  {
+   		  NRF24_Receive(RxData);
+   		  HAL_UART_Transmit(&huart2, RxData, strlen((char *)RxData), 1000);
+   	  }
+
+    HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);///DBG
 
    //
   }
@@ -185,9 +209,12 @@ void SystemClock_Config(void)
 
   /** Initializes the CPU, AHB and APB buses clocks
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE|RCC_OSCILLATORTYPE_LSE;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_HSE
+                              |RCC_OSCILLATORTYPE_LSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_BYPASS_PWR;
   RCC_OscInitStruct.LSEState = RCC_LSE_ON;
+  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
   RCC_OscInitStruct.HSEDiv = RCC_HSE_DIV1;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)

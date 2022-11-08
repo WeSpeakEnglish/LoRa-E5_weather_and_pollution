@@ -15,7 +15,6 @@
 ../Core/Src/stm32wlxx_it.c:281:6:TIM17_IRQHandler	8	static
 ../Core/Src/stm32wlxx_it.c:295:6:USART1_IRQHandler	8	static
 ../Core/Src/stm32wlxx_it.c:309:6:USART2_IRQHandler	8	static
-../Core/Src/stm32wlxx_it.c:323:6:EXTI15_10_IRQHandler	8	static
-../Core/Src/stm32wlxx_it.c:337:6:RTC_Alarm_IRQHandler	8	static
-../Core/Src/stm32wlxx_it.c:351:6:SUBGHZ_Radio_IRQHandler	8	static
-../Core/Src/stm32wlxx_it.c:365:6:DMAMUX1_OVR_IRQHandler	8	static
+../Core/Src/stm32wlxx_it.c:323:6:RTC_Alarm_IRQHandler	8	static
+../Core/Src/stm32wlxx_it.c:337:6:SUBGHZ_Radio_IRQHandler	8	static
+../Core/Src/stm32wlxx_it.c:351:6:DMAMUX1_OVR_IRQHandler	8	static
