@@ -63,8 +63,8 @@ static int counter = 0;
 
 extern DMA_HandleTypeDef hdma_usart2_rx;
 
-uint8_t RxAddress[] = {0x00,0xDD,0xCC,0xBB,0xAA}; //ADDR receiving
-uint8_t TxAddress[] = {0xEE,0xDD,0xCC,0xBB,0xAA}; //ADDR to which transmitting
+uint8_t RxAddress[] = "prijimac00"; //ADDR receiving
+uint8_t TxAddress[] = {0x76,0x79,0x73,0x69,0x6C};//{0x6C,0x69,0x73,0x79,0x76};//{0x6C,0x69,0x73,0x79,0x76}; //ADDR to which transmitting
 uint8_t TxData[] = "Hello World\n";
 
 uint8_t RxData[32];
@@ -97,6 +97,7 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 //	static uint16_t count = 1;
+	uint8_t arrayToSenfNRF[32] = {0};
 
   /* USER CODE END 1 */
 
@@ -131,9 +132,9 @@ int main(void)
 
   NRF24_Init();
 
-  NRF24_RxMode(RxAddress, 10);
+ // NRF24_RxMode(RxAddress, 1);
 
- //  NRF24_TxMode(TxAddress, 10);
+
 
    NRF24_ReadAll(data);
 
@@ -173,7 +174,11 @@ int main(void)
     temp  = -45.0 + 175.0 * (float)temp_hword/(float)65535.0;
     humidity = -6.0 + 125.0 * (float)th_hword/(float)65535.0;
 
+    NRF24_TxMode(TxAddress, 76);
+    NRF24_Transmit( arrayToSenfNRF);
 
+    NRF24_RxMode(RxAddress, 76);
+    HAL_Delay(10);
     if (isDataAvailable(2) == 1)
    	  {
    		  NRF24_Receive(RxData);

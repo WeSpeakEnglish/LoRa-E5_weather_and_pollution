@@ -58,7 +58,7 @@ void CE_Disable (void)
 // write a single byte to the particular register
 void nrf24_WriteReg (uint8_t Reg, uint8_t Data)
 {
-	//HAL_StatusTypeDef checkOK;
+	HAL_StatusTypeDef checkOK;
 	uint8_t buf[2];
 	buf[0] = Reg|1<<5;
 	buf[1] = Data;
@@ -66,7 +66,7 @@ void nrf24_WriteReg (uint8_t Reg, uint8_t Data)
 	// Pull the CS Pin LOW to select the device
 	CS_Select();
 
-//	checkOK = HAL_SPI_Transmit(NRF24_SPI, buf, 2, 1000);
+	checkOK = HAL_SPI_Transmit(NRF24_SPI, buf, 2, 1000);
 
 	// Pull the CS HIGH to release the device
 	CS_UnSelect();
@@ -77,7 +77,7 @@ void nrf24_WriteRegMulti (uint8_t Reg, uint8_t *data, int size)
 {
 	uint8_t buf[2];
 	buf[0] = Reg|1<<5;
-//	buf[1] = Data;
+	//buf[1] = Data;
 
 	// Pull the CS Pin LOW to select the device
 	CS_Select();
@@ -198,11 +198,11 @@ void NRF24_Init (void)
 
 	nrf24_WriteReg (SETUP_AW, 0x03);  // 5 Bytes for the TX/RX address
 
-	nrf24_WriteReg (SETUP_RETR, 0);   // No retransmission
+	nrf24_WriteReg (SETUP_RETR, 0x07);   // No retransmission
 
 	nrf24_WriteReg (RF_CH, 0);  // will be setup during Tx or RX
 
-	nrf24_WriteReg (RF_SETUP, 0x0E);   // Power= 0db, data rate = 2Mbps
+	nrf24_WriteReg (RF_SETUP, 0x03);   // Power= 0db, data rate = 2Mbps 0x0e
 
 	// Enable the chip after configuring the device
 	CE_Enable();
@@ -224,8 +224,8 @@ void NRF24_TxMode (uint8_t *Address, uint8_t channel)
 
 	// power up the device
 	uint8_t config = nrf24_ReadReg(CONFIG);
-//	config = config | (1<<1);   // write 1 in the PWR_UP bit
-	config = config & (0xF2);    // write 0 in the PRIM_RX, and 1 in the PWR_UP, and all other bits are masked
+	config = config | 12;   // write 1 in the PWR_UP bit crc enable 16 bits
+//	config = config & (0xF6);    // write 0 in the PRIM_RX, and 1 in the PWR_UP, and all other bits are masked
 	nrf24_WriteReg (CONFIG, config);
 
 	// Enable the chip after configuring the device
