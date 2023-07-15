@@ -1,0 +1,10 @@
+stm32wlxx_ll_bus.h:449:22:LL_AHB2_GRP1_EnableClock	1
+stm32wlxx_ll_bus.h:914:22:LL_APB1_GRP1_EnableClock	1
+stm32wlxx_ll_bus.h:1018:22:LL_APB1_GRP1_DisableClock	1
+stm32wlxx_ll_bus.h:1303:22:LL_APB2_GRP1_EnableClock	1
+stm32wlxx_ll_bus.h:1351:22:LL_APB2_GRP1_DisableClock	1
+stm32wlxx_ll_system.h:498:22:LL_SYSCFG_EnableFastModePlus	1
+usart.c:35:6:MX_USART1_UART_Init	5
+usart.c:81:6:MX_USART2_UART_Init	5
+usart.c:124:6:HAL_UART_MspInit	9
+usart.c:273:6:HAL_UART_MspDeInit	3

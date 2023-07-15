@@ -1,0 +1,17 @@
+LoRaMacConfirmQueue.c:82:28:IncreaseBufferPointer	2
+LoRaMacConfirmQueue.c:97:28:DecreaseBufferPointer	2
+LoRaMacConfirmQueue.c:111:13:IsListEmpty	2
+LoRaMacConfirmQueue.c:120:13:IsListFull	2
+LoRaMacConfirmQueue.c:129:28:GetElement	4
+LoRaMacConfirmQueue.c:151:6:LoRaMacConfirmQueueInit	1
+LoRaMacConfirmQueue.c:168:6:LoRaMacConfirmQueueAdd	2
+LoRaMacConfirmQueue.c:193:6:LoRaMacConfirmQueueRemoveLast	2
+LoRaMacConfirmQueue.c:208:6:LoRaMacConfirmQueueRemoveFirst	2
+LoRaMacConfirmQueue.c:223:6:LoRaMacConfirmQueueSetStatus	3
+LoRaMacConfirmQueue.c:238:26:LoRaMacConfirmQueueGetStatus	3
+LoRaMacConfirmQueue.c:253:6:LoRaMacConfirmQueueSetStatusCmn	4
+LoRaMacConfirmQueue.c:275:26:LoRaMacConfirmQueueGetStatusCmn	1
+LoRaMacConfirmQueue.c:280:6:LoRaMacConfirmQueueIsCmdActive	2
+LoRaMacConfirmQueue.c:289:6:LoRaMacConfirmQueueHandleCb	4
+LoRaMacConfirmQueue.c:324:9:LoRaMacConfirmQueueGetCnt	1
+LoRaMacConfirmQueue.c:329:6:LoRaMacConfirmQueueIsFull	2

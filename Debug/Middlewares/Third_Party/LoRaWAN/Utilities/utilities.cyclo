@@ -1,0 +1,11 @@
+utilities.c:51:16:rand1	1
+utilities.c:56:6:srand1	1
+utilities.c:62:9:randr	1
+utilities.c:67:6:memcpy1	2
+utilities.c:75:6:memcpyr	2
+utilities.c:84:6:memset1	2
+utilities.c:92:8:Nibble2HexChar	3
+utilities.c:108:10:Crc32	4
+utilities.c:130:10:Crc32Init	1
+utilities.c:135:10:Crc32Update	4
+utilities.c:156:10:Crc32Finalize	1

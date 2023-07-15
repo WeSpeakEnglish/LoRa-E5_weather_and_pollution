@@ -91,7 +91,7 @@ extern "C" {
 #define CONTEXT_MANAGEMENT_ENABLED                      0
 
 /* Class B ------------------------------------*/
-#define LORAMAC_CLASSB_ENABLED                          1
+#define LORAMAC_CLASSB_ENABLED                          0
 
 #if ( LORAMAC_CLASSB_ENABLED == 1 )
 /* CLASS B LSE crystal calibration*/

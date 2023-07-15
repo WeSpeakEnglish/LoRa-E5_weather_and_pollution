@@ -49,40 +49,40 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := LoRa-E5_weather_and_pollution
+BUILD_ARTIFACT_NAME := Seeed-LoRa-E5
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-LoRa-E5_weather_and_pollution.elf \
+Seeed-LoRa-E5.elf \
 
 MAP_FILES += \
-LoRa-E5_weather_and_pollution.map \
+Seeed-LoRa-E5.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-LoRa-E5_weather_and_pollution.list \
+Seeed-LoRa-E5.list \
 
 OBJCOPY_HEX += \
-LoRa-E5_weather_and_pollution.hex \
+Seeed-LoRa-E5.hex \
 
 OBJCOPY_BIN += \
-LoRa-E5_weather_and_pollution.bin \
+Seeed-LoRa-E5.bin \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: LoRa-E5_weather_and_pollution.elf secondary-outputs
+main-build: Seeed-LoRa-E5.elf secondary-outputs
 
 # Tool invocations
-LoRa-E5_weather_and_pollution.elf LoRa-E5_weather_and_pollution.map: $(OBJS) $(USER_OBJS) C:\PRJ\LoRa-E5_weather_and_pollution\STM32WLE5JCIX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "LoRa-E5_weather_and_pollution.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\PRJ\LoRa-E5_weather_and_pollution\STM32WLE5JCIX_FLASH.ld" -Wl,-Map="LoRa-E5_weather_and_pollution.map" -Wl,--gc-sections -Wl,--verbose -static  -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Seeed-LoRa-E5.elf Seeed-LoRa-E5.map: $(OBJS) $(USER_OBJS) D:\PRJ\LoRa-E5_weather_and_pollution\STM32WLE5JCIX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Seeed-LoRa-E5.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\PRJ\LoRa-E5_weather_and_pollution\STM32WLE5JCIX_FLASH.ld" -Wl,-Map="Seeed-LoRa-E5.map" -Wl,--gc-sections -Wl,--verbose -static  -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -91,24 +91,24 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-LoRa-E5_weather_and_pollution.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "LoRa-E5_weather_and_pollution.list"
+Seeed-LoRa-E5.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Seeed-LoRa-E5.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-LoRa-E5_weather_and_pollution.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "LoRa-E5_weather_and_pollution.hex"
+Seeed-LoRa-E5.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "Seeed-LoRa-E5.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-LoRa-E5_weather_and_pollution.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "LoRa-E5_weather_and_pollution.bin"
+Seeed-LoRa-E5.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "Seeed-LoRa-E5.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) LoRa-E5_weather_and_pollution.bin LoRa-E5_weather_and_pollution.elf LoRa-E5_weather_and_pollution.hex LoRa-E5_weather_and_pollution.list LoRa-E5_weather_and_pollution.map default.size.stdout
+	-$(RM) Seeed-LoRa-E5.bin Seeed-LoRa-E5.elf Seeed-LoRa-E5.hex Seeed-LoRa-E5.list Seeed-LoRa-E5.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)

@@ -1,0 +1,8 @@
+RegionCN470B26.c:38:10:RegionCN470B26GetDownlinkFrequency	1
+RegionCN470B26.c:43:9:RegionCN470B26GetBeaconChannelOffset	1
+RegionCN470B26.c:48:9:RegionCN470B26LinkAdrChMaskUpdate	1
+RegionCN470B26.c:55:6:RegionCN470B26VerifyRfFreq	2
+RegionCN470B26.c:67:6:RegionCN470B26InitializeChannels	2
+RegionCN470B26.c:78:6:RegionCN470B26InitializeChannelsMask	1
+RegionCN470B26.c:83:10:RegionCN470B26GetRx1Frequency	1
+RegionCN470B26.c:88:10:RegionCN470B26GetRx2Frequency	1

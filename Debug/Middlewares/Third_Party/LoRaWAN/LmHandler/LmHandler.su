@@ -8,8 +8,7 @@
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:664:23:LmHandlerJoinStatus	48	static
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:689:24:LmHandlerSend	48	static
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:781:24:LmHandlerDeviceTimeReq	32	static
-../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:802:31:LmHandlerBeaconReq	32	static
-../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:823:24:LmHandlerPingSlotReq	48	static
+../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:823:24:LmHandlerPingSlotReq	16	static
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:855:24:LmHandlerRequestClass	56	static
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:952:24:LmHandlerGetCurrentClass	56	static
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:970:24:LmHandlerGetTxDatarate	56	static
@@ -18,7 +17,7 @@
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:1019:13:McpsConfirm	16	static
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:1034:13:McpsIndication	40	static
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:1091:13:MlmeConfirm	56	static
-../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:1191:13:MlmeIndication	72	static
+../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:1191:13:MlmeIndication	24	static
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:1296:24:LmHandlerPackageRegister	24	static
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:1337:13:LmHandlerPackageIsInitialized	16	static
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:1349:13:LmHandlerPackagesNotify	24	static
@@ -55,7 +54,7 @@
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:1929:24:LmHandlerSetJoinRx2Delay	56	static
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:1942:24:LmHandlerGetPingPeriodicity	16	static
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:1957:24:LmHandlerSetPingPeriodicity	16	static
-../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:1976:24:LmHandlerGetBeaconState	56	static
+../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:1976:24:LmHandlerGetBeaconState	16	static
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:1998:24:LmHandlerGetNwkKey	24	static
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:2025:24:LmHandlerSetNwkKey	56	static
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.c:2046:24:LmHandlerGetAppKey	24	static

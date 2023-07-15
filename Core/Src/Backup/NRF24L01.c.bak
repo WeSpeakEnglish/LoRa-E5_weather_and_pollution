@@ -58,6 +58,7 @@ void CE_Disable (void)
 // write a single byte to the particular register
 void nrf24_WriteReg (uint8_t Reg, uint8_t Data)
 {
+	//HAL_StatusTypeDef checkOK;
 	uint8_t buf[2];
 	buf[0] = Reg|1<<5;
 	buf[1] = Data;
@@ -65,7 +66,7 @@ void nrf24_WriteReg (uint8_t Reg, uint8_t Data)
 	// Pull the CS Pin LOW to select the device
 	CS_Select();
 
-	HAL_SPI_Transmit(NRF24_SPI, buf, 2, 1000);
+//	checkOK = HAL_SPI_Transmit(NRF24_SPI, buf, 2, 1000);
 
 	// Pull the CS HIGH to release the device
 	CS_UnSelect();
