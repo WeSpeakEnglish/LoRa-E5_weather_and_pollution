@@ -55,7 +55,7 @@ uint8_t aRXBufferUser[RX_BUFFER_SIZE];
 uint8_t mainBuffer[RX_BUFFER_SIZE];
 
 uint8_t receivedFlag = 1;
-uint16_t PM2_5;
+uint32_t PM2_5;
 float temp;
 float humidity;
 char PM_measure_flag = 1;
@@ -133,14 +133,13 @@ int main(void)
 
   NRF24_RxMode(RxAddress, 10);
 
- //  NRF24_TxMode(TxAddress, 10);
 
    NRF24_ReadAll(data);
 
   F1_QueueIni(); // init Function queue
 
-  HAL_UARTEx_ReceiveToIdle_DMA(&huart2, aRXBufferUser, RX_BUFFER_SIZE);
-  __HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);
+  HAL_UART_Receive_IT(&huart2, aRXBufferUser, RX_BUFFER_SIZE);
+
 
   /* USER CODE END 2 */
 
@@ -154,7 +153,7 @@ int main(void)
   while (1)
   {
 	HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(0x44 << 1),(uint8_t*)&SHT40_cmd, 1, 100);
-	MeasurePM_sens();
+
 
     /* USER CODE END WHILE */
     MX_LoRaWAN_Process();
@@ -165,19 +164,16 @@ int main(void)
     F1_pull()();
 
 
-
-
     HAL_I2C_Master_Receive(&hi2c2, (uint16_t)(0x44 << 1),SHT40_dataRX, 6, 100);
     temp_hword = SHT40_dataRX[0] * 256 + SHT40_dataRX[1];
     th_hword = SHT40_dataRX[3] * 256 + SHT40_dataRX[4];
     temp  = -45.0 + 175.0 * (float)temp_hword/(float)65535.0;
     humidity = -6.0 + 125.0 * (float)th_hword/(float)65535.0;
-
-
+    if(UART2_SET)MeasurePM_sens();
     if (isDataAvailable(2) == 1)
    	  {
-   		  NRF24_Receive(RxData);
-   		  HAL_UART_Transmit(&huart2, RxData, strlen((char *)RxData), 1000);
+ //  		  NRF24_Receive(RxData);
+//   		  HAL_UART_Transmit(&huart2, RxData, strlen((char *)RxData), 1000);
    	  }
 
     HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);///DBG
@@ -241,21 +237,7 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
-void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
-{
-	if (huart->Instance == USART2)
-	{
-		if(aRXBufferUser[0]=='B'&& aRXBufferUser[1]=='M'){
-		//memcpy(mainBuffer,aRXBufferUser,Size);
-		if((aRXBufferUser[30]<<8) + aRXBufferUser[31])
-			PM2_5 = aRXBufferUser[6]*256+aRXBufferUser[7];
 
-
-		}
-		UART2_SET =1;
-
-	}
-}
 
 void EnablePM_sens(void){
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
@@ -270,13 +252,9 @@ void DisablePM_sens(void){
 
 void MeasurePM_sens(void){
 
-	if(PM_measure_flag){
-	       UART2_SET = 0;
-	       HAL_UARTEx_ReceiveToIdle_DMA(&huart2, aRXBufferUser, RX_BUFFER_SIZE);
-		   __HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);
+	       HAL_UART_Receive_IT(&huart2, aRXBufferUser, RX_BUFFER_SIZE);
 
 
-	     }
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
@@ -289,16 +267,16 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     	  F1_push(EnablePM_sens);
 
     	  break;
-      case 840:
+      case 5:
      	  PM_measure_flag = 1;
-    	  F1_push(MeasurePM_sens);
+    	//  F1_push(MeasurePM_sens);
     	  break;
-      case 860:
-    	  F1_push(DisablePM_sens);
+      case 10:
+    	//  F1_push(DisablePM_sens);
     	  PM_measure_flag = 0;
       }
 
-      counter %= 900;
+      counter %= 20;
    }
 }
 

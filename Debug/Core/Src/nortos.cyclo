@@ -1,4 +1,4 @@
-nortos.c:16:6:SimpleF1	1
-nortos.c:20:7:F1_QueueIni	1
-nortos.c:25:6:F1_push	2
-nortos.c:32:9:F1_pull	2
+../Core/Src/nortos.c:16:6:SimpleF1	1
+../Core/Src/nortos.c:20:7:F1_QueueIni	1
+../Core/Src/nortos.c:25:6:F1_push	2
+../Core/Src/nortos.c:32:9:F1_pull	2

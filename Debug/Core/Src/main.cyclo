@@ -1,9 +1,8 @@
-stm32wlxx_ll_rcc.h:1257:22:LL_RCC_LSE_SetDriveCapability	1
-main.c:96:5:main	2
-main.c:196:6:SystemClock_Config	3
-main.c:244:6:HAL_UARTEx_RxEventCallback	5
-main.c:260:6:EnablePM_sens	1
-main.c:265:6:DisablePM_sens	1
-main.c:271:6:MeasurePM_sens	2
-main.c:282:6:HAL_TIM_PeriodElapsedCallback	6
-main.c:314:6:Error_Handler	1
+../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_ll_rcc.h:1257:22:LL_RCC_LSE_SetDriveCapability	1
+../Core/Src/main.c:96:5:main	2
+../Core/Src/main.c:192:6:SystemClock_Config	3
+../Core/Src/main.c:242:6:EnablePM_sens	1
+../Core/Src/main.c:247:6:DisablePM_sens	1
+../Core/Src/main.c:253:6:MeasurePM_sens	1
+../Core/Src/main.c:260:6:HAL_TIM_PeriodElapsedCallback	6
+../Core/Src/main.c:292:6:Error_Handler	1
