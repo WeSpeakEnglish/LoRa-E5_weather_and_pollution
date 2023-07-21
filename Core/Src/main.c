@@ -251,7 +251,10 @@ void DisablePM_sens(void){
 }
 
 void MeasurePM_sens(void){
+	if(aRXBufferUser[0]==0x02 && aRXBufferUser[31]== 0x03){
 
+	PM2_5 = aRXBufferUser[5] + aRXBufferUser[6]*256 + aRXBufferUser[7]*65536;
+}
 	       HAL_UART_Receive_IT(&huart2, aRXBufferUser, RX_BUFFER_SIZE);
 
 

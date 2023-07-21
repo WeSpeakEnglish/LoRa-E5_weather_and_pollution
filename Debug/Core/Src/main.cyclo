@@ -3,6 +3,6 @@
 ../Core/Src/main.c:192:6:SystemClock_Config	3
 ../Core/Src/main.c:242:6:EnablePM_sens	1
 ../Core/Src/main.c:247:6:DisablePM_sens	1
-../Core/Src/main.c:253:6:MeasurePM_sens	1
-../Core/Src/main.c:260:6:HAL_TIM_PeriodElapsedCallback	6
-../Core/Src/main.c:292:6:Error_Handler	1
+../Core/Src/main.c:253:6:MeasurePM_sens	3
+../Core/Src/main.c:263:6:HAL_TIM_PeriodElapsedCallback	6
+../Core/Src/main.c:295:6:Error_Handler	1
