@@ -4,6 +4,6 @@
 ../Core/Src/main.c:238:6:EnablePM_sens	1
 ../Core/Src/main.c:243:6:DisablePM_sens	1
 ../Core/Src/main.c:249:6:MeasurePM_sens	3
-../Core/Src/main.c:262:6:MeasureTempHum	1
-../Core/Src/main.c:271:6:HAL_TIM_PeriodElapsedCallback	6
-../Core/Src/main.c:305:6:Error_Handler	1
+../Core/Src/main.c:267:6:MeasureTempHum	1
+../Core/Src/main.c:276:6:HAL_TIM_PeriodElapsedCallback	6
+../Core/Src/main.c:310:6:Error_Handler	1

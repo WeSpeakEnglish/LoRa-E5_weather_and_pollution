@@ -248,13 +248,18 @@ void DisablePM_sens(void){
 
 void MeasurePM_sens(void){
 	uint16_t RxLen;
+
 	if(aRXBufferUser[0]==0x02 && aRXBufferUser[31]== 0x03){
 
 	PM2_5 = aRXBufferUser[5] + aRXBufferUser[6]*256 + aRXBufferUser[7]*65536;
+	UART2_SET  = 0;
+	HAL_UART_Receive_IT(&huart2, (uint8_t *) aRXBufferUser, RX_BUFFER_SIZE);
 
 }
-		   HAL_UARTEx_ReceiveToIdle(&huart2, (uint8_t *) aRXBufferUser, RX_BUFFER_SIZE, &RxLen, 1000);
-	       HAL_UART_Receive_IT(&huart2, (uint8_t *) aRXBufferUser, RX_BUFFER_SIZE);
+		   else
+			   HAL_UARTEx_ReceiveToIdle(&huart2, (uint8_t *) aRXBufferUser, RX_BUFFER_SIZE, &RxLen, 1000);
+
+
 
 
 }
