@@ -5,13 +5,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.c 
+../Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.c \
+../Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpPackagesRegistration.c 
 
 OBJS += \
-./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.o 
+./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.o \
+./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpPackagesRegistration.o 
 
 C_DEPS += \
-./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.d 
+./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.d \
+./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpPackagesRegistration.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -21,7 +24,7 @@ Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/%.o Middlewares/Third_Party/L
 clean: clean-Middlewares-2f-Third_Party-2f-LoRaWAN-2f-LmHandler-2f-Packages
 
 clean-Middlewares-2f-Third_Party-2f-LoRaWAN-2f-LmHandler-2f-Packages:
-	-$(RM) ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.cyclo ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.d ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.o ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.su
+	-$(RM) ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.cyclo ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.d ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.o ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.su ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpPackagesRegistration.cyclo ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpPackagesRegistration.d ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpPackagesRegistration.o ./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpPackagesRegistration.su
 
 .PHONY: clean-Middlewares-2f-Third_Party-2f-LoRaWAN-2f-LmHandler-2f-Packages
 

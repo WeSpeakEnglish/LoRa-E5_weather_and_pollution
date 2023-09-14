@@ -10,7 +10,9 @@ Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.o: \
  ../LoRaWAN/Target/lorawan_conf.h \
  ../Middlewares/Third_Party/LoRaWAN/LmHandler/NvmDataMgmt.h \
  ../Middlewares/Third_Party/SubGHz_Phy/radio.h \
+ ../Middlewares/Third_Party/SubGHz_Phy/radio_def.h \
  ../Middlewares/Third_Party/SubGHz_Phy/radio_ex.h \
+ ../Middlewares/Third_Party/SubGHz_Phy/lr_fhss_v1_base_types.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCommon.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacInterfaces.h \
@@ -42,7 +44,8 @@ Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.o: \
  ../LoRaWAN/Target/mw_log_conf.h \
  ../Utilities/trace/adv_trace/stm32_adv_trace.h \
  ../Middlewares/Third_Party/LoRaWAN/LmHandler/lorawan_version.h \
- ../LoRaWAN/App/lora_info.h
+ ../LoRaWAN/App/lora_info.h \
+ ../Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpPackagesRegistration.h
 ../Middlewares/Third_Party/LoRaWAN/Utilities/utilities.h:
 ../Core/Inc/utilities_conf.h:
 ../Drivers/CMSIS/Include/cmsis_compiler.h:
@@ -58,7 +61,9 @@ Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.o: \
 ../LoRaWAN/Target/lorawan_conf.h:
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/NvmDataMgmt.h:
 ../Middlewares/Third_Party/SubGHz_Phy/radio.h:
+../Middlewares/Third_Party/SubGHz_Phy/radio_def.h:
 ../Middlewares/Third_Party/SubGHz_Phy/radio_ex.h:
+../Middlewares/Third_Party/SubGHz_Phy/lr_fhss_v1_base_types.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCommon.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacInterfaces.h:
@@ -92,3 +97,4 @@ Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.o: \
 ../Utilities/trace/adv_trace/stm32_adv_trace.h:
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/lorawan_version.h:
 ../LoRaWAN/App/lora_info.h:
+../Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpPackagesRegistration.h:

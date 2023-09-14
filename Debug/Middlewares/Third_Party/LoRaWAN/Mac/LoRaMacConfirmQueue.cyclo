@@ -13,5 +13,5 @@
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.c:275:26:LoRaMacConfirmQueueGetStatusCmn	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.c:280:6:LoRaMacConfirmQueueIsCmdActive	2
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.c:289:6:LoRaMacConfirmQueueHandleCb	4
-../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.c:324:9:LoRaMacConfirmQueueGetCnt	1
-../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.c:329:6:LoRaMacConfirmQueueIsFull	2
+../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.c:326:9:LoRaMacConfirmQueueGetCnt	1
+../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.c:331:6:LoRaMacConfirmQueueIsFull	2

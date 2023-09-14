@@ -1,7 +1,9 @@
 Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCommon.o: \
  ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCommon.c \
  ../Middlewares/Third_Party/SubGHz_Phy/radio.h \
+ ../Middlewares/Third_Party/SubGHz_Phy/radio_def.h \
  ../Middlewares/Third_Party/SubGHz_Phy/radio_ex.h \
+ ../Middlewares/Third_Party/SubGHz_Phy/lr_fhss_v1_base_types.h \
  ../Middlewares/Third_Party/LoRaWAN/Utilities/utilities.h \
  ../Core/Inc/utilities_conf.h ../Drivers/CMSIS/Include/cmsis_compiler.h \
  ../Drivers/CMSIS/Include/cmsis_gcc.h ../Utilities/misc/stm32_mem.h \
@@ -25,7 +27,9 @@ Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCommon.o: \
  ../LoRaWAN/Target/mw_log_conf.h \
  ../Utilities/trace/adv_trace/stm32_adv_trace.h
 ../Middlewares/Third_Party/SubGHz_Phy/radio.h:
+../Middlewares/Third_Party/SubGHz_Phy/radio_def.h:
 ../Middlewares/Third_Party/SubGHz_Phy/radio_ex.h:
+../Middlewares/Third_Party/SubGHz_Phy/lr_fhss_v1_base_types.h:
 ../Middlewares/Third_Party/LoRaWAN/Utilities/utilities.h:
 ../Core/Inc/utilities_conf.h:
 ../Drivers/CMSIS/Include/cmsis_compiler.h:

@@ -26,15 +26,17 @@ Middlewares/Third_Party/LoRaWAN/Mac/LoRaMac.o: \
  ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCrypto.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacMessageTypes.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacHeaderTypes.h \
+ ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacInterfaces.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacTest.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.h \
- ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacInterfaces.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacParser.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCommands.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacAdr.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacSerializer.h \
  ../Middlewares/Third_Party/SubGHz_Phy/radio.h \
+ ../Middlewares/Third_Party/SubGHz_Phy/radio_def.h \
  ../Middlewares/Third_Party/SubGHz_Phy/radio_ex.h \
+ ../Middlewares/Third_Party/SubGHz_Phy/lr_fhss_v1_base_types.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMac.h \
  ../LoRaWAN/Target/mw_log_conf.h \
  ../Utilities/trace/adv_trace/stm32_adv_trace.h
@@ -69,15 +71,17 @@ Middlewares/Third_Party/LoRaWAN/Mac/LoRaMac.o: \
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCrypto.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacMessageTypes.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacHeaderTypes.h:
+../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacInterfaces.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacTest.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacConfirmQueue.h:
-../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacInterfaces.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacParser.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacCommands.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacAdr.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacSerializer.h:
 ../Middlewares/Third_Party/SubGHz_Phy/radio.h:
+../Middlewares/Third_Party/SubGHz_Phy/radio_def.h:
 ../Middlewares/Third_Party/SubGHz_Phy/radio_ex.h:
+../Middlewares/Third_Party/SubGHz_Phy/lr_fhss_v1_base_types.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMac.h:
 ../LoRaWAN/Target/mw_log_conf.h:
 ../Utilities/trace/adv_trace/stm32_adv_trace.h:

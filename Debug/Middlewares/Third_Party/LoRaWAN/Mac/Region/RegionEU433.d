@@ -1,7 +1,9 @@
 Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU433.o: \
  ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU433.c \
  ../Middlewares/Third_Party/SubGHz_Phy/radio.h \
+ ../Middlewares/Third_Party/SubGHz_Phy/radio_def.h \
  ../Middlewares/Third_Party/SubGHz_Phy/radio_ex.h \
+ ../Middlewares/Third_Party/SubGHz_Phy/lr_fhss_v1_base_types.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU433.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.h \
  ../Middlewares/Third_Party/LoRaWAN/Utilities/utilities.h \
@@ -25,7 +27,9 @@ Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU433.o: \
  ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacHeaderTypes.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionNvm.h
 ../Middlewares/Third_Party/SubGHz_Phy/radio.h:
+../Middlewares/Third_Party/SubGHz_Phy/radio_def.h:
 ../Middlewares/Third_Party/SubGHz_Phy/radio_ex.h:
+../Middlewares/Third_Party/SubGHz_Phy/lr_fhss_v1_base_types.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU433.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.h:
 ../Middlewares/Third_Party/LoRaWAN/Utilities/utilities.h:

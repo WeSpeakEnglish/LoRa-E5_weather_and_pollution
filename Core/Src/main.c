@@ -50,7 +50,7 @@
 
 /* USER CODE BEGIN PV */
 
-uint8_t aRXBufferUser[RX_BUFFER_SIZE];
+volatile uint8_t aRXBufferUser[RX_BUFFER_SIZE];
 
 uint8_t mainBuffer[RX_BUFFER_SIZE];
 
@@ -138,7 +138,7 @@ int main(void)
 
   F1_QueueIni(); // init Function queue
 
-  HAL_UART_Receive_IT(&huart2, aRXBufferUser, RX_BUFFER_SIZE);
+  HAL_UART_Receive_IT(&huart2, (uint8_t *)aRXBufferUser, RX_BUFFER_SIZE);
 
 
   /* USER CODE END 2 */
@@ -152,7 +152,7 @@ int main(void)
 
   while (1)
   {
-	HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(0x44 << 1),(uint8_t*)&SHT40_cmd, 1, 100);
+
 
 
     /* USER CODE END WHILE */
@@ -164,11 +164,7 @@ int main(void)
     F1_pull()();
 
 
-    HAL_I2C_Master_Receive(&hi2c2, (uint16_t)(0x44 << 1),SHT40_dataRX, 6, 100);
-    temp_hword = SHT40_dataRX[0] * 256 + SHT40_dataRX[1];
-    th_hword = SHT40_dataRX[3] * 256 + SHT40_dataRX[4];
-    temp  = -45.0 + 175.0 * (float)temp_hword/(float)65535.0;
-    humidity = -6.0 + 125.0 * (float)th_hword/(float)65535.0;
+
     if(UART2_SET)MeasurePM_sens();
     if (isDataAvailable(2) == 1)
    	  {
@@ -251,13 +247,25 @@ void DisablePM_sens(void){
 }
 
 void MeasurePM_sens(void){
+	uint16_t RxLen;
 	if(aRXBufferUser[0]==0x02 && aRXBufferUser[31]== 0x03){
 
 	PM2_5 = aRXBufferUser[5] + aRXBufferUser[6]*256 + aRXBufferUser[7]*65536;
+
 }
-	       HAL_UART_Receive_IT(&huart2, aRXBufferUser, RX_BUFFER_SIZE);
+		   HAL_UARTEx_ReceiveToIdle(&huart2, (uint8_t *) aRXBufferUser, RX_BUFFER_SIZE, &RxLen, 1000);
+	       HAL_UART_Receive_IT(&huart2, (uint8_t *) aRXBufferUser, RX_BUFFER_SIZE);
 
 
+}
+
+void MeasureTempHum(void){
+    HAL_I2C_Master_Receive(&hi2c2, (uint16_t)(0x44 << 1),SHT40_dataRX, 6, 100);
+    temp_hword = SHT40_dataRX[0] * 256 + SHT40_dataRX[1];
+    th_hword = SHT40_dataRX[3] * 256 + SHT40_dataRX[4];
+    temp  = -45.0 + 175.0 * (float)temp_hword/(float)65535.0;
+    humidity = -6.0 + 125.0 * (float)th_hword/(float)65535.0;
+    HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(0x44 << 1),(uint8_t*)&SHT40_cmd, 1, 100);
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
@@ -272,12 +280,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     	  break;
       case 5:
      	  PM_measure_flag = 1;
-    	//  F1_push(MeasurePM_sens);
+
     	  break;
       case 10:
     	//  F1_push(DisablePM_sens);
+
     	  PM_measure_flag = 0;
       }
+      F1_push(MeasureTempHum);
 
       counter %= 20;
    }

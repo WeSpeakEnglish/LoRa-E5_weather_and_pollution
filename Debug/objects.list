@@ -62,6 +62,7 @@
 "./Middlewares/Third_Party/LoRaWAN/LmHandler/LmHandler.o"
 "./Middlewares/Third_Party/LoRaWAN/LmHandler/NvmDataMgmt.o"
 "./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpCompliance.o"
+"./Middlewares/Third_Party/LoRaWAN/LmHandler/Packages/LmhpPackagesRegistration.o"
 "./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMac.o"
 "./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacAdr.o"
 "./Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacClassB.o"

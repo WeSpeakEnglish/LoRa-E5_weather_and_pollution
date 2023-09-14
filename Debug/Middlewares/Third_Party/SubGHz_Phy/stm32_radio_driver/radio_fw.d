@@ -5,10 +5,9 @@ Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_fw.o: \
  ../Drivers/CMSIS/Include/cmsis_gcc.h ../Core/Inc/utilities_conf.h \
  ../Utilities/misc/stm32_mem.h ../Utilities/misc/stm32_tiny_vsnprintf.h \
  ../Core/Inc/utilities_def.h \
- ../Middlewares/Third_Party/SubGHz_Phy/radio.h \
- ../Middlewares/Third_Party/SubGHz_Phy/radio_ex.h \
  ../Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_fw.h \
- ../Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_driver.h \
+ ../Middlewares/Third_Party/SubGHz_Phy/radio_def.h \
+ ../Middlewares/Third_Party/SubGHz_Phy/radio_ex.h \
  ../LoRaWAN/Target/radio_conf.h ../Core/Inc/platform.h \
  ../Drivers/CMSIS/Device/ST/STM32WLxx/Include/stm32wlxx.h \
  ../Drivers/CMSIS/Device/ST/STM32WLxx/Include/stm32wle5xx.h \
@@ -65,6 +64,7 @@ Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_fw.o: \
  ../Utilities/trace/adv_trace/stm32_adv_trace.h \
  ../LoRaWAN/Target/radio_board_if.h ../Core/Inc/utilities_def.h \
  ../Core/Inc/sys_debug.h ../Core/Inc/sys_conf.h ../Core/Inc/platform.h \
+ ../Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_driver.h \
  ../LoRaWAN/Target/mw_log_conf.h
 ../LoRaWAN/Target/timer.h:
 ../Utilities/timer/stm32_timer.h:
@@ -74,10 +74,9 @@ Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_fw.o: \
 ../Utilities/misc/stm32_mem.h:
 ../Utilities/misc/stm32_tiny_vsnprintf.h:
 ../Core/Inc/utilities_def.h:
-../Middlewares/Third_Party/SubGHz_Phy/radio.h:
-../Middlewares/Third_Party/SubGHz_Phy/radio_ex.h:
 ../Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_fw.h:
-../Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_driver.h:
+../Middlewares/Third_Party/SubGHz_Phy/radio_def.h:
+../Middlewares/Third_Party/SubGHz_Phy/radio_ex.h:
 ../LoRaWAN/Target/radio_conf.h:
 ../Core/Inc/platform.h:
 ../Drivers/CMSIS/Device/ST/STM32WLxx/Include/stm32wlxx.h:
@@ -140,4 +139,5 @@ D:/PRJ/LoRa-E5_weather_and_pollution/Drivers/BSP/STM32WLxx_Nucleo/stm32wlxx_nucl
 ../Core/Inc/sys_debug.h:
 ../Core/Inc/sys_conf.h:
 ../Core/Inc/platform.h:
+../Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_driver.h:
 ../LoRaWAN/Target/mw_log_conf.h:

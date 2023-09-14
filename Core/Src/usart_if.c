@@ -247,7 +247,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   /* USER CODE BEGIN HAL_UART_RxCpltCallback_2 */
 
       if (huart->Instance == USART2) {
-    	  __HAL_UART_CLEAR_IDLEFLAG(&huart2);        /* Clear IDLE line flag */
+//    	  __HAL_UART_CLEAR_IDLEFLAG(&huart2);        /* Clear IDLE line flag */
     	  UART2_SET = 1;
          // receivedFlag = 1;
       }

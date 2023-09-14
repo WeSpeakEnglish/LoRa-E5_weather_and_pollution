@@ -57,7 +57,7 @@ LoRaWAN/App/lora_app.o: ../LoRaWAN/App/lora_app.c ../Core/Inc/platform.h \
  ../Utilities/misc/stm32_mem.h ../Utilities/misc/stm32_tiny_vsnprintf.h \
  ../Core/Inc/utilities_def.h ../LoRaWAN/App/lora_app.h \
  ../Utilities/sequencer/stm32_seq.h ../Utilities/timer/stm32_timer.h \
- ../Core/Inc/utilities_def.h ../LoRaWAN/App/lora_app_version.h \
+ ../Core/Inc/utilities_def.h ../LoRaWAN/App/app_version.h \
  ../Middlewares/Third_Party/LoRaWAN/LmHandler/lorawan_version.h \
  ../Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/subghz_phy_version.h \
  ../LoRaWAN/App/lora_info.h \
@@ -78,9 +78,9 @@ LoRaWAN/App/lora_app.o: ../LoRaWAN/App/lora_app.c ../Core/Inc/platform.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/secure-element-nvm.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacClassBNvm.h \
  ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionVersion.h \
- ../Utilities/lpm/tiny_lpm/stm32_lpm.h ../Core/Inc/adc_if.h \
- ../Core/Inc/adc.h ../Core/Inc/platform.h ../LoRaWAN/App/CayenneLpp.h \
- ../Core/Inc/sys_sensors.h ../Core/Inc/flash_if.h
+ ../Core/Inc/adc_if.h ../Core/Inc/adc.h ../Core/Inc/platform.h \
+ ../LoRaWAN/App/CayenneLpp.h ../Core/Inc/sys_sensors.h \
+ ../Core/Inc/flash_if.h
 ../Core/Inc/platform.h:
 ../Drivers/CMSIS/Device/ST/STM32WLxx/Include/stm32wlxx.h:
 ../Drivers/CMSIS/Device/ST/STM32WLxx/Include/stm32wle5xx.h:
@@ -147,7 +147,7 @@ D:/PRJ/LoRa-E5_weather_and_pollution/Drivers/BSP/STM32WLxx_Nucleo/stm32wlxx_nucl
 ../Utilities/sequencer/stm32_seq.h:
 ../Utilities/timer/stm32_timer.h:
 ../Core/Inc/utilities_def.h:
-../LoRaWAN/App/lora_app_version.h:
+../LoRaWAN/App/app_version.h:
 ../Middlewares/Third_Party/LoRaWAN/LmHandler/lorawan_version.h:
 ../Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/subghz_phy_version.h:
 ../LoRaWAN/App/lora_info.h:
@@ -169,7 +169,6 @@ D:/PRJ/LoRa-E5_weather_and_pollution/Drivers/BSP/STM32WLxx_Nucleo/stm32wlxx_nucl
 ../Middlewares/Third_Party/LoRaWAN/Mac/secure-element-nvm.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/LoRaMacClassBNvm.h:
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionVersion.h:
-../Utilities/lpm/tiny_lpm/stm32_lpm.h:
 ../Core/Inc/adc_if.h:
 ../Core/Inc/adc.h:
 ../Core/Inc/platform.h:
