@@ -151,8 +151,8 @@ int main(void)
     MX_LoRaWAN_Process();
 
     /* USER CODE BEGIN 3 */
+    MeasurePM_sens();
     F1_pull()();
-    if(UART2_SET)MeasurePM_sens();
     HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);///DBG
   }
 
@@ -237,8 +237,11 @@ void MeasurePM_sens(void){
 				+ aRXBufferUser[3] * 65536;
 
 }
-		   HAL_UARTEx_ReceiveToIdle(&huart2, (uint8_t *) aRXBufferUser, RX_BUFFER_SIZE, &RxLen, 1000);
-	       HAL_UART_Receive_IT(&huart2, (uint8_t *) aRXBufferUser, RX_BUFFER_SIZE);
+
+	HAL_UART_Receive_IT(&huart2, (uint8_t *) aRXBufferUser, RX_BUFFER_SIZE);
+	HAL_UARTEx_ReceiveToIdle(&huart2, (uint8_t *) aRXBufferUser, RX_BUFFER_SIZE, &RxLen, 1000);
+		   //HAL_UARTEx_ReceiveToIdle_IT(&huart2, (uint8_t *) aRXBufferUser, RX_BUFFER_SIZE);
+
 
 
 }
@@ -258,8 +261,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
    {
 	  counter++;
       switch(counter){
-      case 820:
-    	  F1_push(EnablePM_sens);
+      case 3:
+//    	  F1_push(MeasurePM_sens);
 
     	  break;
       case 5:
