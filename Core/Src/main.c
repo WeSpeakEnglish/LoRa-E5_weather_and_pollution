@@ -62,19 +62,19 @@ float humidity;
 char PM_measure_flag = 1;
 static int counter = 0;
 
-extern DMA_HandleTypeDef hdma_usart2_rx;
-
-uint8_t RxAddress[] = {0x00,0xDD,0xCC,0xBB,0xAA}; //ADDR receiving
-uint8_t TxAddress[] = {0xEE,0xDD,0xCC,0xBB,0xAA}; //ADDR to which transmitting
-uint8_t TxData[] = "Hello World\n";
-
 uint8_t RxData[32];
 uint8_t data[50];
 
-uint8_t SHT40_cmd = 0xFD;
+const uint8_t SHT40_cmd = 0xFD;
+const uint8_t SHT40_addr = 0x44;
 uint8_t SHT40_dataRX[6];
 uint16_t temp_hword; // teporarly temperature half word
 uint16_t th_hword;   // teporarly humidy half  word
+
+const uint8_t J5_SSP_addr = 0x33;
+const uint8_t J5_SSP_cmd_status = 0x26;
+const uint8_t JS_SSP_regs[]={0x00,0x01,0x02,0x03};
+uint8_t J5_SSP_dataRX[14];
 
 
 /* USER CODE END PV */
@@ -151,7 +151,8 @@ int main(void)
     MX_LoRaWAN_Process();
 
     /* USER CODE BEGIN 3 */
-    MeasurePM_sens();
+    MeasureOzone();
+
     F1_pull()();
     HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);///DBG
   }
@@ -226,33 +227,26 @@ void DisablePM_sens(void){
 }
 
 void MeasurePM_sens(void){
-	uint16_t RxLen;
-	if(aRXBufferUser[0]==0x02 && aRXBufferUser[31]== 0x03){
-
-		PM2_5 = aRXBufferUser[5] + aRXBufferUser[6] * 256
-				+ aRXBufferUser[7] * 65536;
-		PM10 = aRXBufferUser[9] + aRXBufferUser[10] * 256
-				+ aRXBufferUser[11] * 65536;
-		PM1 = aRXBufferUser[1] + aRXBufferUser[2] * 256
-				+ aRXBufferUser[3] * 65536;
-
+ uint32_t tstV;
+ uint32_t *ptstV;
+	HAL_I2C_Mem_Read(&hi2c2, J5_SSP_addr << 1, 0x00, 1, J5_SSP_dataRX, 12, 1000);
+	PM1 = J5_SSP_dataRX[0] + (J5_SSP_dataRX[1] << 8) + (J5_SSP_dataRX[2] << 16) +  (J5_SSP_dataRX[3] << 24);
+	PM2_5 = J5_SSP_dataRX[4] + (J5_SSP_dataRX[5] << 8) + (J5_SSP_dataRX[6] << 16) +  (J5_SSP_dataRX[7] << 24);
+	PM10 = J5_SSP_dataRX[8] + (J5_SSP_dataRX[9] << 8) + (J5_SSP_dataRX[10] << 16) +  (J5_SSP_dataRX[11] << 24);
 }
-
+void MeasureOzone(void){
+	uint16_t RxLen;
 	HAL_UART_Receive_IT(&huart2, (uint8_t *) aRXBufferUser, RX_BUFFER_SIZE);
 	HAL_UARTEx_ReceiveToIdle(&huart2, (uint8_t *) aRXBufferUser, RX_BUFFER_SIZE, &RxLen, 1000);
-		   //HAL_UARTEx_ReceiveToIdle_IT(&huart2, (uint8_t *) aRXBufferUser, RX_BUFFER_SIZE);
-
-
-
 }
 
 void MeasureTempHum(void){
-    HAL_I2C_Master_Receive(&hi2c2, (uint16_t)(0x44 << 1),SHT40_dataRX, 6, 100);
+    HAL_I2C_Master_Receive(&hi2c2, (uint16_t)(SHT40_addr << 1),SHT40_dataRX, 6, 100);
     temp_hword = SHT40_dataRX[0] * 256 + SHT40_dataRX[1];
     th_hword = SHT40_dataRX[3] * 256 + SHT40_dataRX[4];
     temp  = -45.0 + 175.0 * (float)temp_hword/(float)65535.0;
     humidity = -6.0 + 125.0 * (float)th_hword/(float)65535.0;
-    HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(0x44 << 1),(uint8_t*)&SHT40_cmd, 1, 100);
+    HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(SHT40_addr << 1),(uint8_t*)&SHT40_cmd, 1, 100);
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
@@ -275,6 +269,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     	  PM_measure_flag = 0;
       }
       F1_push(MeasureTempHum);
+      F1_push(MeasurePM_sens);
 
       counter %= 20;
    }

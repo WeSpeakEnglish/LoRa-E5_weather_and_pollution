@@ -558,15 +558,14 @@ static void SendTxData(void)
 
 
   APP_LOG(TS_ON, VLEVEL_M, "VDDA: %d\r\n", batteryLevel);
-  APP_LOG(TS_ON, VLEVEL_M, "temp: %d\r\n", (int16_t)(sensor_data.temperature));
 
   AppData.Port = LORAWAN_USER_APP_PORT;
-  AppData.Buffer[i++] = PM1/100;
-  AppData.Buffer[i++] = PM1%100;
-  AppData.Buffer[i++] = PM2_5/100;
-  AppData.Buffer[i++] = PM2_5%100;
-  AppData.Buffer[i++] = PM10/100;
-  AppData.Buffer[i++] = PM10%100;
+  AppData.Buffer[i++] = (PM1/100) >> 8;
+  AppData.Buffer[i++] = (PM1/100)%256;
+  AppData.Buffer[i++] = (PM2_5/100)>>8;
+  AppData.Buffer[i++] = (PM2_5/100)%256;
+  AppData.Buffer[i++] = (PM10/100)>>8;
+  AppData.Buffer[i++] = (PM10/100)%256;
   int16_t tempVar;
   tempVar = ((int16_t)(temp*100.0));
   AppData.Buffer[i++] = tempVar/100;
