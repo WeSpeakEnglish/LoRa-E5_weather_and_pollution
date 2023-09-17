@@ -133,9 +133,10 @@ extern "C" {
 
 /* Exported macros -----------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-extern uint16_t PM1;
-extern uint16_t PM2_5;
-extern uint16_t PM10;
+extern uint32_t PM1;
+extern uint32_t PM2_5;
+extern uint32_t PM10;
+extern uint16_t OzonePPB;
 extern float temp;
 extern float humidity;
 /* USER CODE END EM */

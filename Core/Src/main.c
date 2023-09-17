@@ -27,7 +27,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "string.h"
+
+#include "ZE27_O3.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -37,7 +38,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define RX_BUFFER_SIZE 32
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -49,21 +50,18 @@
 
 /* USER CODE BEGIN PV */
 
-volatile uint8_t aRXBufferUser[RX_BUFFER_SIZE];
+volatile uint8_t aRXBufferUser[ZE27_RX_BUFFER_SIZE];
 
-uint8_t mainBuffer[RX_BUFFER_SIZE];
 
 uint8_t receivedFlag = 1;
 uint32_t PM2_5;
 uint32_t PM1;
 uint32_t PM10;
+uint16_t OzonePPB;
 float temp;
 float humidity;
 char PM_measure_flag = 1;
 static int counter = 0;
-
-uint8_t RxData[32];
-uint8_t data[50];
 
 const uint8_t SHT40_cmd = 0xFD;
 const uint8_t SHT40_addr = 0x44;
@@ -73,9 +71,9 @@ uint16_t th_hword;   // teporarly humidy half  word
 
 const uint8_t J5_SSP_addr = 0x33;
 const uint8_t J5_SSP_cmd_status = 0x26;
-const uint8_t JS_SSP_regs[]={0x00,0x01,0x02,0x03};
-uint8_t J5_SSP_dataRX[14];
+uint8_t J5_SSP_dataRX[12];
 
+uint8_t checksumtestArr[] = {0xFF, 0x86, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x30};
 
 /* USER CODE END PV */
 
@@ -88,6 +86,7 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 void MeasurePM_sens(void);
+void MeasureOzone(void);
 /* USER CODE END 0 */
 
 /**
@@ -132,7 +131,7 @@ int main(void)
 
   F1_QueueIni(); // init Function queue
 
-  HAL_UART_Receive_IT(&huart2, (uint8_t *)aRXBufferUser, RX_BUFFER_SIZE);
+ // HAL_UART_Receive_IT(&huart2, (uint8_t *)aRXBufferUser, ZE27_RX_BUFFER_SIZE);
 
 
   /* USER CODE END 2 */
@@ -151,7 +150,8 @@ int main(void)
     MX_LoRaWAN_Process();
 
     /* USER CODE BEGIN 3 */
-    MeasureOzone();
+
+    	MeasureOzone();
 
     F1_pull()();
     HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);///DBG
@@ -227,8 +227,6 @@ void DisablePM_sens(void){
 }
 
 void MeasurePM_sens(void){
- uint32_t tstV;
- uint32_t *ptstV;
 	HAL_I2C_Mem_Read(&hi2c2, J5_SSP_addr << 1, 0x00, 1, J5_SSP_dataRX, 12, 1000);
 	PM1 = J5_SSP_dataRX[0] + (J5_SSP_dataRX[1] << 8) + (J5_SSP_dataRX[2] << 16) +  (J5_SSP_dataRX[3] << 24);
 	PM2_5 = J5_SSP_dataRX[4] + (J5_SSP_dataRX[5] << 8) + (J5_SSP_dataRX[6] << 16) +  (J5_SSP_dataRX[7] << 24);
@@ -236,8 +234,9 @@ void MeasurePM_sens(void){
 }
 void MeasureOzone(void){
 	uint16_t RxLen;
-	HAL_UART_Receive_IT(&huart2, (uint8_t *) aRXBufferUser, RX_BUFFER_SIZE);
-	HAL_UARTEx_ReceiveToIdle(&huart2, (uint8_t *) aRXBufferUser, RX_BUFFER_SIZE, &RxLen, 1000);
+	HAL_UART_Receive_IT(&huart2, (uint8_t *) aRXBufferUser, ZE27_RX_BUFFER_SIZE);
+	HAL_UARTEx_ReceiveToIdle(&huart2, (uint8_t *) aRXBufferUser, ZE27_RX_BUFFER_SIZE, &RxLen, 1000);
+	OzonePPB = ZE27_parsePPB(aRXBufferUser);
 }
 
 void MeasureTempHum(void){

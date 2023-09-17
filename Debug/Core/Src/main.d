@@ -47,7 +47,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_ll_system.h \
  ../Core/Inc/nortos.h ../Core/Inc/i2c.h ../Core/Inc/main.h \
  ../LoRaWAN/App/app_lorawan.h ../Core/Inc/spi.h ../Core/Inc/tim.h \
- ../Core/Inc/usart.h ../Core/Inc/gpio.h
+ ../Core/Inc/usart.h ../Core/Inc/gpio.h ../Core/Inc/ZE27_O3.h
 ../Core/Inc/main.h:
 ../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_hal.h:
 ../Core/Inc/stm32wlxx_hal_conf.h:
@@ -103,3 +103,4 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/tim.h:
 ../Core/Inc/usart.h:
 ../Core/Inc/gpio.h:
+../Core/Inc/ZE27_O3.h:

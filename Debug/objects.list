@@ -1,4 +1,4 @@
-"./Core/Src/NRF24L01.o"
+"./Core/Src/ZE27_O3.o"
 "./Core/Src/adc.o"
 "./Core/Src/adc_if.o"
 "./Core/Src/dma.o"

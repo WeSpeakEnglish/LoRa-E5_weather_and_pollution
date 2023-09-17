@@ -573,6 +573,8 @@ static void SendTxData(void)
   tempVar = ((int16_t)(humidity*100.0));
   AppData.Buffer[i++] = tempVar/100;
   AppData.Buffer[i++] = tempVar%100;
+  AppData.Buffer[i++] = OzonePPB/256;
+  AppData.Buffer[i++] = OzonePPB%256;
 
 
   AppData.BufferSize = i;
