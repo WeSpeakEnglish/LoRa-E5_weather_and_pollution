@@ -52,7 +52,6 @@
 
 volatile uint8_t aRXBufferUser[ZE27_RX_BUFFER_SIZE];
 
-
 uint8_t receivedFlag = 1;
 uint32_t PM2_5;
 uint32_t PM1;
@@ -61,19 +60,17 @@ uint16_t OzonePPB;
 float temp;
 float humidity;
 char PM_measure_flag = 1;
-static int counter = 0;
+volatile int counter = 0;
 
 const uint8_t SHT40_cmd = 0xFD;
 const uint8_t SHT40_addr = 0x44;
-uint8_t SHT40_dataRX[6];
+volatile uint8_t SHT40_dataRX[6] = {0,0,0,0,0,0};
 uint16_t temp_hword; // teporarly temperature half word
 uint16_t th_hword;   // teporarly humidy half  word
 
 const uint8_t J5_SSP_addr = 0x33;
 const uint8_t J5_SSP_cmd_status = 0x26;
-uint8_t J5_SSP_dataRX[12];
-
-uint8_t checksumtestArr[] = {0xFF, 0x86, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x30};
+uint8_t J5_SSP_dataRX[12]= {0,0,0,0,0,0,0,0,0,0,0,0};
 
 /* USER CODE END PV */
 
@@ -96,8 +93,6 @@ void MeasureOzone(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-//	static uint16_t count = 1;
-
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -106,15 +101,12 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
-
   /* USER CODE END Init */
 
   /* Configure the system clock */
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -126,33 +118,21 @@ int main(void)
   MX_TIM17_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
-
-  UART2_SET =0;
-
   F1_QueueIni(); // init Function queue
-
- // HAL_UART_Receive_IT(&huart2, (uint8_t *)aRXBufferUser, ZE27_RX_BUFFER_SIZE);
-
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
-
   HAL_TIM_Base_Start_IT(&htim16);
-
 
   while (1)
   {
-
     /* USER CODE END WHILE */
     MX_LoRaWAN_Process();
 
     /* USER CODE BEGIN 3 */
-
-    	MeasureOzone();
-
+   	MeasureOzone();
     F1_pull()();
     HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);///DBG
   }
@@ -213,17 +193,12 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
-
-
 void EnablePM_sens(void){
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
-
 }
 
 void DisablePM_sens(void){
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
-
-
 }
 
 void MeasurePM_sens(void){
@@ -240,12 +215,13 @@ void MeasureOzone(void){
 }
 
 void MeasureTempHum(void){
+
     HAL_I2C_Master_Receive(&hi2c2, (uint16_t)(SHT40_addr << 1),SHT40_dataRX, 6, 100);
     temp_hword = SHT40_dataRX[0] * 256 + SHT40_dataRX[1];
     th_hword = SHT40_dataRX[3] * 256 + SHT40_dataRX[4];
     temp  = -45.0 + 175.0 * (float)temp_hword/(float)65535.0;
     humidity = -6.0 + 125.0 * (float)th_hword/(float)65535.0;
-    HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(SHT40_addr << 1),(uint8_t*)&SHT40_cmd, 1, 100);
+	HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(SHT40_addr << 1),(uint8_t*)&SHT40_cmd, 1, 100);
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
@@ -254,23 +230,20 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
    {
 	  counter++;
       switch(counter){
-      case 3:
-//    	  F1_push(MeasurePM_sens);
+      case 0:
 
     	  break;
-      case 5:
+      case 1:
+
      	  PM_measure_flag = 1;
-
     	  break;
-      case 10:
-    	//  F1_push(DisablePM_sens);
-
+      case 9:
     	  PM_measure_flag = 0;
       }
-      F1_push(MeasureTempHum);
-      F1_push(MeasurePM_sens);
+F1_push(MeasureTempHum);
+F1_push(MeasurePM_sens);
 
-      counter %= 20;
+      counter %= 10;
    }
 }
 

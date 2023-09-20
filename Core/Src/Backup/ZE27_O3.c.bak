@@ -20,7 +20,7 @@ uint8_t ZE27_Checksum(uint8_t *msg, unsigned char ln){
 
 uint16_t ZE27_parsePPB(uint8_t *msg){
 	if(msg[ZE27_RX_BUFFER_SIZE -1] == ZE27_Checksum(msg, ZE27_RX_BUFFER_SIZE)){
-		return msg[2]*256 + msg[3];
+		return msg[4]*256 + msg[5];
 	}
  return 0;
 }
