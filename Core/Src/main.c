@@ -70,7 +70,7 @@ uint16_t th_hword;   // teporarly humidy half  word
 
 const uint8_t J5_SSP_addr = 0x33;
 const uint8_t J5_SSP_cmd_status = 0x26;
-uint8_t J5_SSP_dataRX[12]= {0,0,0,0,0,0,0,0,0,0,0,0};
+volatile uint8_t J5_SSP_dataRX[12]= {0,0,0,0,0,0,0,0,0,0,0,0};
 
 /* USER CODE END PV */
 
@@ -119,6 +119,7 @@ int main(void)
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
   F1_QueueIni(); // init Function queue
+  F2_QueueIni();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -134,6 +135,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
    	MeasureOzone();
     F1_pull()();
+    F2_pull()();
     HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);///DBG
   }
 
@@ -221,27 +223,27 @@ void MeasureTempHum(void){
     th_hword = SHT40_dataRX[3] * 256 + SHT40_dataRX[4];
     temp  = -45.0 + 175.0 * (float)temp_hword/(float)65535.0;
     humidity = -6.0 + 125.0 * (float)th_hword/(float)65535.0;
-	HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(SHT40_addr << 1),(uint8_t*)&SHT40_cmd, 1, 100);
+    HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(SHT40_addr << 1),(uint8_t*)&SHT40_cmd, 1, 100);
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
    if (htim == &htim16)
    {
-	  counter++;
+
       switch(counter){
       case 0:
-
+    	  F2_push(MeasureTempHum);
     	  break;
       case 1:
-
+    	  F1_push(MeasurePM_sens);
      	  PM_measure_flag = 1;
     	  break;
       case 9:
     	  PM_measure_flag = 0;
       }
-F1_push(MeasureTempHum);
-F1_push(MeasurePM_sens);
+      counter++;
+
 
       counter %= 10;
    }
