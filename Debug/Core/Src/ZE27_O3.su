@@ -1,2 +1,2 @@
-../Core/Src/ZE27_O3.c:9:9:ZE27_Checksum	24	static
-../Core/Src/ZE27_O3.c:21:10:ZE27_parsePPB	24	static
+../Core/Src/ZE27_O3.c:9:9:ZE27_Checksum	0	static
+../Core/Src/ZE27_O3.c:21:10:ZE27_parsePPB	8	static

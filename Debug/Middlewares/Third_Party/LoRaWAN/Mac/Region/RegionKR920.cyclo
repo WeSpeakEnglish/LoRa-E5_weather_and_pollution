@@ -9,7 +9,7 @@
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionKR920.c:614:6:RegionKR920TxConfig	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionKR920.c:652:9:RegionKR920LinkAdrReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionKR920.c:759:9:RegionKR920RxParamSetupReq	1
-../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionKR920.c:786:8:RegionKR920NewChannelReq	7
+../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionKR920.c:786:8:RegionKR920NewChannelReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionKR920.c:839:8:RegionKR920TxParamSetupReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionKR920.c:845:8:RegionKR920DlChannelReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionKR920.c:877:8:RegionKR920AlternateDr	1

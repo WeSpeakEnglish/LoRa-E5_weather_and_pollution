@@ -9,7 +9,7 @@
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionAS923.c:734:6:RegionAS923TxConfig	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionAS923.c:778:9:RegionAS923LinkAdrReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionAS923.c:885:9:RegionAS923RxParamSetupReq	1
-../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionAS923.c:912:8:RegionAS923NewChannelReq	7
+../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionAS923.c:912:8:RegionAS923NewChannelReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionAS923.c:965:8:RegionAS923TxParamSetupReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionAS923.c:971:8:RegionAS923DlChannelReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionAS923.c:1003:8:RegionAS923AlternateDr	1
