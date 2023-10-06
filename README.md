@@ -4,7 +4,8 @@ It is custom FW, so you need to erase the STM32 chip first [Erase Factory AT Fir
 ## Sensors for this custom build
 1. SHT40 for humidity and temperature over I2C2 
 2. ZE27-O3 Ozone sensor over USART2
-3. SN-GCJA5 PM sensr over I2C2 
+3. SN-GCJA5 PM sensor over I2C2 
+
 
 # Whole PRJ is ready to compile in CubeIDE
 *LoRa-E5_weather_and_pollution.ioc* is configuration file for CubeMX
@@ -12,3 +13,10 @@ It is custom FW, so you need to erase the STM32 chip first [Erase Factory AT Fir
 
 # It is sending the payload over LoRaWAN appx. every 2.5 mins
 Usually it takes up to 10 min. to react on downlink command (depend of communication stability)
+
+# Downlink port #2
+Encoder for downlink (measurements.LED_ON is interface fild on datacake):
+function Encoder(measurements, port) {
+    if(measurements.LED_ON.value) return [1];
+    else return [0];
+}
