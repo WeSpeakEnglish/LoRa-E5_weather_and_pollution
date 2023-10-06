@@ -16,7 +16,9 @@ Usually it takes up to 10 min. to react on downlink command (depend of communica
 
 # Downlink port #2
 Encoder for downlink (measurements.LED_ON is interface fild on datacake):
+```javascript 
 function Encoder(measurements, port) {
     if(measurements.LED_ON.value) return [1];
     else return [0];
 }
+```
