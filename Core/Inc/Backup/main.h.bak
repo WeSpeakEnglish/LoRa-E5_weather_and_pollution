@@ -63,8 +63,6 @@ void Error_Handler(void);
 #define RTC_PREDIV_A ((1<<(15-RTC_N_PREDIV_S))-1)
 #define DBG3_Pin GPIO_PIN_3
 #define DBG3_GPIO_Port GPIOB
-#define DBG4_Pin GPIO_PIN_4
-#define DBG4_GPIO_Port GPIOB
 #define USARTx_RX_Pin GPIO_PIN_7
 #define USARTx_RX_GPIO_Port GPIOB
 #define SPI_CSN_Pin GPIO_PIN_9

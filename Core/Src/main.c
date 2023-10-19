@@ -133,7 +133,7 @@ int main(void)
     MX_LoRaWAN_Process();
 
     /* USER CODE BEGIN 3 */
-   	MeasureOzone();
+
     F1_pull()();
     F2_pull()();
     HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);///DBG
@@ -196,11 +196,11 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 
 void EnablePM_sens(void){
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
 }
 
 void DisablePM_sens(void){
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
 }
 
 void MeasurePM_sens(void){
@@ -233,19 +233,22 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
       switch(counter){
       case 0:
+
+    	  break;
+      case 540:
+    	  F2_push(EnablePM_sens);
+
+    	  break;
+      case 590:
     	  F2_push(MeasureTempHum);
-    	  break;
-      case 1:
     	  F1_push(MeasurePM_sens);
-     	  PM_measure_flag = 1;
-    	  break;
-      case 9:
-    	  PM_measure_flag = 0;
+    	  F1_push(MeasureOzone);
+    	  F2_push(DisablePM_sens);
       }
       counter++;
 
 
-      counter %= 10;
+      counter %= 600;
    }
 }
 
