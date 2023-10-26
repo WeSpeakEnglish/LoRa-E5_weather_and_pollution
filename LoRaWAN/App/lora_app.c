@@ -41,7 +41,7 @@
 
 /* External variables ---------------------------------------------------------*/
 /* USER CODE BEGIN EV */
-
+extern uint32_t extBattery;
 /* USER CODE END EV */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -547,7 +547,7 @@ static void SendTxData(void)
 {
   /* USER CODE BEGIN SendTxData_1 */
   LmHandlerErrorStatus_t status = LORAMAC_HANDLER_ERROR;
-  uint8_t batteryLevel = GetBatteryLevel();
+  extBattery = GetBatteryLevel();
   sensor_t sensor_data;
   UTIL_TIMER_Time_t nextTxIn = 0;
 
@@ -557,7 +557,7 @@ static void SendTxData(void)
   uint32_t i = 0;
 
 
-  APP_LOG(TS_ON, VLEVEL_M, "VDDA: %d\r\n", batteryLevel);
+  APP_LOG(TS_ON, VLEVEL_M, "VDDA: %d\r\n", extBattery);
 
   AppData.Port = LORAWAN_USER_APP_PORT;
   AppData.Buffer[i++] = (PM1/100) >> 8;
@@ -575,7 +575,7 @@ static void SendTxData(void)
   AppData.Buffer[i++] = tempVar%100;
   AppData.Buffer[i++] = OzonePPB/256;
   AppData.Buffer[i++] = OzonePPB%256;
-
+  AppData.Buffer[i++] = extBattery;
 
   AppData.BufferSize = i;
 

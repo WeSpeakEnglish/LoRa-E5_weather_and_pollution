@@ -57,10 +57,12 @@ uint32_t PM2_5;
 uint32_t PM1;
 uint32_t PM10;
 uint16_t OzonePPB;
+uint8_t extBattery;
 float temp;
 float humidity;
-char PM_measure_flag = 1;
+uint8_t PM_measure_flag = 1;
 volatile int counter = 0;
+uint8_t pmSensStatus = 0x00;
 
 const uint8_t SHT40_cmd = 0xFD;
 const uint8_t SHT40_addr = 0x44;
@@ -118,6 +120,7 @@ int main(void)
   MX_TIM17_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
+
   F1_QueueIni(); // init Function queue
   F2_QueueIni();
   /* USER CODE END 2 */
@@ -126,6 +129,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
   HAL_TIM_Base_Start_IT(&htim16);
+
 
   while (1)
   {
@@ -205,9 +209,12 @@ void DisablePM_sens(void){
 
 void MeasurePM_sens(void){
 	HAL_I2C_Mem_Read(&hi2c2, J5_SSP_addr << 1, 0x00, 1, J5_SSP_dataRX, 12, 1000);
+	HAL_I2C_Mem_Read(&hi2c2, J5_SSP_addr << 1, 0x26, 1, &pmSensStatus, 1, 1000);
+ if(!pmSensStatus){
 	PM1 = J5_SSP_dataRX[0] + (J5_SSP_dataRX[1] << 8) + (J5_SSP_dataRX[2] << 16) +  (J5_SSP_dataRX[3] << 24);
 	PM2_5 = J5_SSP_dataRX[4] + (J5_SSP_dataRX[5] << 8) + (J5_SSP_dataRX[6] << 16) +  (J5_SSP_dataRX[7] << 24);
 	PM10 = J5_SSP_dataRX[8] + (J5_SSP_dataRX[9] << 8) + (J5_SSP_dataRX[10] << 16) +  (J5_SSP_dataRX[11] << 24);
+ }
 }
 void MeasureOzone(void){
 	uint16_t RxLen;
@@ -228,26 +235,43 @@ void MeasureTempHum(void){
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
+	static char firstStart = 1;
    if (htim == &htim16)
    {
 
       switch(counter){
-      case 0:
-
+      case 10:
+    	  if(firstStart)
+    		  F2_push(EnablePM_sens);
     	  break;
-      case 540:
+      case 40:
+    	  if(firstStart){
+    		  F2_push(MeasureTempHum);
+    		  F1_push(MeasurePM_sens);
+    		  F1_push(MeasureOzone);
+    		  F2_push(DisablePM_sens);
+    		  firstStart = 0;
+    	  }
+    	  break;
+      case 559:
     	  F2_push(EnablePM_sens);
 
     	  break;
-      case 590:
+      case 595:
     	  F2_push(MeasureTempHum);
-    	  F1_push(MeasurePM_sens);
+    	  break;
+      case 596:
+    	  F2_push(MeasureTempHum);
     	  F1_push(MeasureOzone);
+    	  break;
+
+      case 597:
+    	  F1_push(MeasurePM_sens);
+    	  break;
+      case 599:
     	  F2_push(DisablePM_sens);
       }
       counter++;
-
-
       counter %= 600;
    }
 }

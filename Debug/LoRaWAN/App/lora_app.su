@@ -19,6 +19,6 @@
 ../LoRaWAN/App/lora_app.c:949:13:OnRestoreContextRequest	8	static
 ../LoRaWAN/App/lora_app.c:836:13:StopJoin	16	static
 ../LoRaWAN/App/lora_app.c:894:13:StoreContext	8	static
-../LoRaWAN/App/lora_app.c:546:13:SendTxData	24	static
+../LoRaWAN/App/lora_app.c:546:13:SendTxData	32	static
 ../LoRaWAN/App/lora_app.c:348:6:LoRaWAN_Init	48	static
 ../LoRaWAN/App/lora_app.c:442:6:HAL_GPIO_EXTI_Callback	0	static
