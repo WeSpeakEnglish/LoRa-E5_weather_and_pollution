@@ -9,7 +9,7 @@
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionRU864.c:599:6:RegionRU864TxConfig	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionRU864.c:643:9:RegionRU864LinkAdrReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionRU864.c:750:9:RegionRU864RxParamSetupReq	1
-../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionRU864.c:777:8:RegionRU864NewChannelReq	1
+../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionRU864.c:777:8:RegionRU864NewChannelReq	7
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionRU864.c:830:8:RegionRU864TxParamSetupReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionRU864.c:836:8:RegionRU864DlChannelReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionRU864.c:868:8:RegionRU864AlternateDr	1

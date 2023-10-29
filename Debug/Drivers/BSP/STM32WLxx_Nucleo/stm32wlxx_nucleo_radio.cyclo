@@ -4,4 +4,4 @@
 ../Drivers/BSP/STM32WLxx_Nucleo/stm32wlxx_nucleo_radio.c:141:9:BSP_RADIO_GetTxConfig	1
 ../Drivers/BSP/STM32WLxx_Nucleo/stm32wlxx_nucleo_radio.c:153:9:BSP_RADIO_IsTCXO	1
 ../Drivers/BSP/STM32WLxx_Nucleo/stm32wlxx_nucleo_radio.c:165:9:BSP_RADIO_IsDCDC	1
-../Drivers/BSP/STM32WLxx_Nucleo/stm32wlxx_nucleo_radio.c:176:9:BSP_RADIO_GetRFOMaxPowerConfig	1
+../Drivers/BSP/STM32WLxx_Nucleo/stm32wlxx_nucleo_radio.c:176:9:BSP_RADIO_GetRFOMaxPowerConfig	2

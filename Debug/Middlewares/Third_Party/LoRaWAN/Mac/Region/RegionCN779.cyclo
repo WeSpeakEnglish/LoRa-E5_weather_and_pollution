@@ -9,7 +9,7 @@
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN779.c:597:6:RegionCN779TxConfig	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN779.c:641:9:RegionCN779LinkAdrReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN779.c:748:9:RegionCN779RxParamSetupReq	1
-../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN779.c:775:8:RegionCN779NewChannelReq	1
+../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN779.c:775:8:RegionCN779NewChannelReq	7
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN779.c:828:8:RegionCN779TxParamSetupReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN779.c:834:8:RegionCN779DlChannelReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionCN779.c:866:8:RegionCN779AlternateDr	1

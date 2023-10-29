@@ -1,4 +1,4 @@
-../Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.c:590:6:RegionIsActive	1
+../Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.c:590:6:RegionIsActive	2
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.c:611:12:RegionGetPhyParam	2
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.c:633:6:RegionSetBandTxDone	2
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/Region.c:654:6:RegionInitDefaults	2

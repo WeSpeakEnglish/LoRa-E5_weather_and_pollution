@@ -20,8 +20,8 @@
 #include "main.h"
 #include "i2c.h"
 #include "app_lorawan.h"
+#include "lptim.h"
 #include "spi.h"
-#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -116,9 +116,8 @@ int main(void)
   MX_LoRaWAN_Init();
   MX_USART2_UART_Init();
   MX_I2C2_Init();
-  MX_TIM16_Init();
-  MX_TIM17_Init();
   MX_SPI2_Init();
+  MX_LPTIM1_Init();
   /* USER CODE BEGIN 2 */
 
   F1_QueueIni(); // init Function queue
@@ -128,11 +127,13 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
-  HAL_TIM_Base_Start_IT(&htim16);
+  //HAL_TIM_Base_Start_IT(&htim16);
+  HAL_LPTIM_TimeOut_Start_IT(&hlptim1,  256, 0);
 
 
   while (1)
   {
+
     /* USER CODE END WHILE */
     MX_LoRaWAN_Process();
 
@@ -140,7 +141,7 @@ int main(void)
 
     F1_pull()();
     F2_pull()();
-    HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);///DBG
+
   }
 
 
@@ -233,10 +234,10 @@ void MeasureTempHum(void){
     HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(SHT40_addr << 1),(uint8_t*)&SHT40_cmd, 1, 100);
 }
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+ void HAL_LPTIM_CompareMatchCallback(LPTIM_HandleTypeDef *hlptim)
 {
 	static char firstStart = 1;
-   if (htim == &htim16)
+   if (hlptim == &hlptim1)
    {
 
       switch(counter){
@@ -272,10 +273,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     	  F2_push(DisablePM_sens);
       }
       counter++;
+      if(counter % 10 == 8)HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_RESET);///DBG
+      if(counter % 10 == 9)HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_SET);///DBG
       counter %= 600;
    }
 }
-
 
 
 
