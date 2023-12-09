@@ -1,10 +1,9 @@
-../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_ll_rcc.h:1257:22:LL_RCC_LSE_SetDriveCapability	1
-../Core/Src/main.c:95:5:main	1
-../Core/Src/main.c:155:6:SystemClock_Config	3
 ../Core/Src/main.c:203:6:EnablePM_sens	1
 ../Core/Src/main.c:207:6:DisablePM_sens	1
 ../Core/Src/main.c:211:6:MeasurePM_sens	2
-../Core/Src/main.c:220:6:MeasureOzone	1
 ../Core/Src/main.c:227:6:MeasureTempHum	1
-../Core/Src/main.c:237:7:HAL_LPTIM_CompareMatchCallback	16
-../Core/Src/main.c:290:6:Error_Handler	1
+../Core/Src/main.c:155:6:SystemClock_Config	3
+../Core/Src/main.c:95:5:main	1
+../Core/Src/main.c:220:6:MeasureOzone	1
+../Core/Src/main.c:241:7:HAL_LPTIM_CompareMatchCallback	18
+../Core/Src/main.c:303:6:Error_Handler	1

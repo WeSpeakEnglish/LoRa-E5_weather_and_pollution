@@ -234,6 +234,10 @@ void MeasureTempHum(void){
     HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(SHT40_addr << 1),(uint8_t*)&SHT40_cmd, 1, 100);
 }
 
+#ifndef batTH
+#define batTH 87
+#endif
+
  void HAL_LPTIM_CompareMatchCallback(LPTIM_HandleTypeDef *hlptim)
 {
 	static char firstStart = 1;
@@ -243,39 +247,48 @@ void MeasureTempHum(void){
       switch(counter){
       case 10:
     	  if(firstStart)
-    		  F2_push(EnablePM_sens);
+    		  F1_push(EnablePM_sens);
+    	  break;
+      case 35:
+    	  if(firstStart){
+    		  F1_push(MeasureTempHum);
+    		  F2_push(MeasureTempHum);
+    	  }
     	  break;
       case 40:
     	  if(firstStart){
     		  F2_push(MeasureTempHum);
     		  F1_push(MeasurePM_sens);
-    		  F1_push(MeasureOzone);
-    		  F2_push(DisablePM_sens);
+    		  //F1_push(MeasureOzone);
+    		  F1_push(DisablePM_sens);
     		  firstStart = 0;
     	  }
     	  break;
-      case 559:
-    	  F2_push(EnablePM_sens);
+      case 859:
+    	  if(extBattery > batTH)
+    		  F1_push(EnablePM_sens);
 
     	  break;
-      case 595:
+      case 895:
+    	  if(extBattery > batTH)
     	  F2_push(MeasureTempHum);
     	  break;
-      case 596:
-    	  F2_push(MeasureTempHum);
-    	  F1_push(MeasureOzone);
+      case 896:
+    	  //F1_push(MeasureTempHum);
+    	  //F1_push(MeasureOzone);
     	  break;
 
-      case 597:
-    	  F1_push(MeasurePM_sens);
+      case 897:
+    	  if(extBattery > batTH)
+    	  F2_push(MeasurePM_sens);
     	  break;
-      case 599:
-    	  F2_push(DisablePM_sens);
+      case 899:
+    	  F1_push(DisablePM_sens);
       }
       counter++;
-      if(counter % 10 == 8)HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_RESET);///DBG
-      if(counter % 10 == 9)HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_SET);///DBG
-      counter %= 600;
+      if(counter % 20 == 8)HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_RESET);///DBG
+      if(counter % 20 == 9)HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_SET);///DBG
+      counter %= 900;
    }
 }
 

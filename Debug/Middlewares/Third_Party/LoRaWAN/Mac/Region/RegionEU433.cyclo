@@ -9,7 +9,7 @@
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU433.c:597:6:RegionEU433TxConfig	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU433.c:641:9:RegionEU433LinkAdrReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU433.c:748:9:RegionEU433RxParamSetupReq	1
-../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU433.c:775:8:RegionEU433NewChannelReq	7
+../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU433.c:775:8:RegionEU433NewChannelReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU433.c:828:8:RegionEU433TxParamSetupReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU433.c:834:8:RegionEU433DlChannelReq	1
 ../Middlewares/Third_Party/LoRaWAN/Mac/Region/RegionEU433.c:866:8:RegionEU433AlternateDr	1

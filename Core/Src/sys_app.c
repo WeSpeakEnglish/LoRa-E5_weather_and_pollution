@@ -155,6 +155,12 @@ uint8_t GetBatteryLevel(void)
   uint16_t batteryLevelmV;
 
   /* USER CODE BEGIN GetBatteryLevel_0 */
+#ifndef AVERAGEL
+#define AVERAGEL 16
+#endif
+
+  static uint16_t batteryLevelmVA[AVERAGEL];
+  static uint16_t count = 0;
 
   /* USER CODE END GetBatteryLevel_0 */
 
@@ -175,7 +181,18 @@ uint8_t GetBatteryLevel(void)
   }
 
   /* USER CODE BEGIN GetBatteryLevel_2 */
+  batteryLevelmVA[count++] = (uint16_t) SYS_GetBatteryLevel();
+  count %= AVERAGEL;
 
+  batteryLevelmV = 0;
+  for(int i=0; i< AVERAGEL; i++)
+  batteryLevelmV += batteryLevelmVA[i];
+
+  //batteryLevelmV /= AVERAGEL;
+
+
+
+  batteryLevel = batteryLevelmV >> 8; //(((uint32_t)(batteryLevelmV - VDD_MIN) * LORAWAN_MAX_BAT) / (VDD_BAT - VDD_MIN));
   /* USER CODE END GetBatteryLevel_2 */
 
   return batteryLevel;  /* 1 (very low) to 254 (fully charged) */
